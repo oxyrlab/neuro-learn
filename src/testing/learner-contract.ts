@@ -11,6 +11,12 @@ export interface LearnerContractOptions {
   readonly seed?: number;
   /** Number of training steps per test. Default 200. */
   readonly steps?: number;
+  /**
+   * What "empty memory" means for a new instance. `'all-zero'` (default): every state value is 0.
+   * `'zero-prediction'`: state may be non-zero (e.g. random hidden weights that break symmetry)
+   * but `predict` must return 0 for any input in [0, 1].
+   */
+  readonly initialState?: 'all-zero' | 'zero-prediction';
 }
 
 const DEFAULT_SEED = 1234;
@@ -82,8 +88,13 @@ export function runLearnerContract(
       expect(learner.serialize().length).toBe(learner.stateSize);
     });
 
-    it('starts with empty (all-zero) memory', () => {
-      expect(sumOfMagnitudes(create().serialize())).toBe(0);
+    it('starts with empty memory', () => {
+      const learner = create();
+      if (options.initialState === 'zero-prediction') {
+        for (const value of predictProbe(learner, seed)) expect(Math.abs(value)).toBe(0);
+      } else {
+        expect(sumOfMagnitudes(learner.serialize())).toBe(0);
+      }
     });
 
     it('keeps state and predictions finite and bounded under training', () => {
