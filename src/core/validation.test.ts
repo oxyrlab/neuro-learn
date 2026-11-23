@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { InvalidParameterError, SizeMismatchError } from './errors';
 import {
+  assertBound,
   assertFiniteBuffer,
   assertFiniteInRange,
   assertNonNegative,
@@ -8,6 +9,10 @@ import {
   assertPositive,
   assertPositiveInteger,
   assertSize,
+  assertWithinMagnitude,
+  createFloat32Array,
+  FLOAT32_MAX,
+  isFiniteBuffer,
 } from './validation';
 
 describe('assertSize', () => {
@@ -78,4 +83,49 @@ describe('assertNonNegativeBuffer', () => {
       InvalidParameterError,
     );
   });
+});
+
+describe('assertBound', () => {
+  it('accepts positive finite values up to the Float32 maximum', () => {
+    expect(() => assertBound('b', 1)).not.toThrow();
+    expect(() => assertBound('b', FLOAT32_MAX)).not.toThrow();
+  });
+  it.each([0, -1, NaN, Infinity, 1e39])('rejects %s', (bad) => {
+    expect(() => assertBound('b', bad)).toThrow(InvalidParameterError);
+  });
+});
+
+describe('assertWithinMagnitude', () => {
+  it('accepts values inside the bound, including the Float32-rounded bound itself', () => {
+    expect(() => assertWithinMagnitude('s', Float32Array.of(-0.5, 0, 0.5), 0.5)).not.toThrow();
+    expect(() => assertWithinMagnitude('s', Float32Array.of(0.1), 0.1)).not.toThrow();
+  });
+  it.each([0.51, -0.51, NaN, Infinity])('rejects %s and names the index', (bad) => {
+    expect(() => assertWithinMagnitude('s', Float32Array.of(0, bad), 0.5)).toThrow(/s\[1\]/);
+  });
+});
+
+describe('isFiniteBuffer', () => {
+  it('reports finiteness', () => {
+    expect(isFiniteBuffer(Float32Array.of(0, 1, -2))).toBe(true);
+    expect(isFiniteBuffer(Float32Array.of(0, NaN))).toBe(false);
+    expect(isFiniteBuffer(Float32Array.of(Infinity))).toBe(false);
+  });
+});
+
+describe('createFloat32Array', () => {
+  it('allocates a zero-filled array', () => {
+    expect(Array.from(createFloat32Array('n', 3))).toEqual([0, 0, 0]);
+  });
+  it.each([1e10, 2 ** 60, 1e300, 1.5, -1, NaN])(
+    'rejects the size %s with a descriptive error',
+    (bad) => {
+      expect(() => createFloat32Array('inputSize * outputSize', bad)).toThrow(
+        InvalidParameterError,
+      );
+      expect(() => createFloat32Array('inputSize * outputSize', bad)).toThrow(
+        /inputSize \* outputSize/,
+      );
+    },
+  );
 });
