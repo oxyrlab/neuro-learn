@@ -1,6 +1,6 @@
 import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
-import { InvalidParameterError, SizeMismatchError } from '../core/errors';
+import { InvalidParameterError, NumericInstabilityError, SizeMismatchError } from '../core/errors';
 import { createSeededRng } from '../core/rng';
 import { RecurrentNetwork } from './recurrent-network';
 
@@ -135,5 +135,53 @@ describe('RecurrentNetwork', () => {
     expect(() => new RecurrentNetwork({ rng: createSeededRng(1), ...options })).toThrow(
       new RegExp(name),
     );
+  });
+
+  it('throws NumericInstabilityError instead of keeping an infinite hidden state (relu)', () => {
+    const network = new RecurrentNetwork({
+      inputSize: 1,
+      hiddenSize: 1,
+      outputSize: 1,
+      rng: createSeededRng(1),
+      hiddenActivation: 'relu',
+    });
+    network.weights.set([5, 5, 0, 1, 0]); // each step multiplies the hidden state by 5
+    const out = new Float32Array(1);
+    let thrown: unknown;
+    let lastFiniteState = network.serialize();
+    for (let step = 0; step < 200 && thrown === undefined; step += 1) {
+      try {
+        network.forward(Float32Array.of(1), out);
+        lastFiniteState = network.serialize();
+      } catch (error) {
+        thrown = error;
+      }
+    }
+    expect(thrown).toBeInstanceOf(NumericInstabilityError);
+    expect(String((thrown as Error).message)).toMatch(/hidden state.*reset/);
+    expect(Array.from(network.serialize())).toEqual(Array.from(lastFiniteState));
+    expect(network.serialize().every((v) => Number.isFinite(v))).toBe(true);
+    network.reset();
+    expect(() => network.forward(Float32Array.of(0), out)).not.toThrow();
+  });
+
+  it('throws NumericInstabilityError when the output overflows and leaves the history untouched', () => {
+    const network = new RecurrentNetwork({
+      inputSize: 1,
+      hiddenSize: 1,
+      outputSize: 1,
+      rng: createSeededRng(1),
+      hiddenActivation: 'linear',
+    });
+    network.weights.set([1, 0, 0, 1e30, 0]); // hidden = input, output = 1e30 * hidden
+    const before = Array.from(network.serialize());
+    expect(() => network.forward(Float32Array.of(1e30), new Float32Array(1))).toThrow(/output/);
+    expect(Array.from(network.serialize())).toEqual(before);
+  });
+
+  it('rejects sizes too large to allocate', () => {
+    expect(
+      () => new RecurrentNetwork({ ...base, hiddenSize: 1e10, rng: createSeededRng(1) }),
+    ).toThrow(InvalidParameterError);
   });
 });
