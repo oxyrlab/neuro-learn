@@ -1,0 +1,32 @@
+{
+  "name": "@oxyrlab/neuro-learn",
+  "version": "0.0.0",
+  "description": "Small, deterministic, allocation-free learning algorithms and neural networks on Float32Array.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oxyrlab/neuro-learn.git"
+  },
+  "files": ["dist"],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "docs:check": "tsx scripts/check-docs.ts"
+  }
+}
