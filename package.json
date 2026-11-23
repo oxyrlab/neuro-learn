@@ -36,7 +36,9 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "docs:check": "tsx scripts/check-docs.ts"
+    "docs:check": "tsx scripts/check-docs.ts",
+    "bench": "node --import tsx scripts/benchmark.ts",
+    "check:allocation": "node --expose-gc --import tsx scripts/check-allocation.ts"
   },
   "peerDependencies": {
     "vitest": ">=3"
