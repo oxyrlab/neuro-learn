@@ -1,3 +1,10 @@
 export { InvalidParameterError, SizeMismatchError } from './core/errors';
 export type { Rng } from './core/rng';
 export { createSeededRng } from './core/rng';
+export type { Learner } from './learning/learner';
+export type { RescorlaWagnerOptions } from './learning/rescorla-wagner';
+export { RescorlaWagnerLearner } from './learning/rescorla-wagner';
+export type { EligibilityTraceOptions } from './learning/eligibility-trace';
+export { EligibilityTraceLearner } from './learning/eligibility-trace';
+export type { HebbianOptions } from './learning/hebbian';
+export { HebbianLearner } from './learning/hebbian';
