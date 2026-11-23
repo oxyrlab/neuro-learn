@@ -1,6 +1,6 @@
 import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
-import { applyDeltaRule, clampMagnitude, multiplyMatrixVector, scaleInPlace } from './linear-math';
+import { applyDeltaRule, clampInPlace, multiplyMatrixVector, scaleInPlace } from './linear-math';
 
 describe('multiplyMatrixVector', () => {
   it('multiplies a 2x3 matrix by a vector', () => {
@@ -10,11 +10,11 @@ describe('multiplyMatrixVector', () => {
   });
 });
 
-describe('clampMagnitude', () => {
-  it('clamps both sides and passes values inside', () => {
-    expect(clampMagnitude(5, 2)).toBe(2);
-    expect(clampMagnitude(-5, 2)).toBe(-2);
-    expect(clampMagnitude(1, 2)).toBe(1);
+describe('clampInPlace', () => {
+  it('clamps both sides and leaves values inside untouched', () => {
+    const buffer = Float32Array.of(5, -5, 1, -1);
+    clampInPlace(buffer, 2);
+    expect(Array.from(buffer)).toEqual([2, -2, 1, -1]);
   });
 });
 
