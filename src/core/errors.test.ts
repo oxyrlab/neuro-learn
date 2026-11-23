@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { InvalidParameterError, SizeMismatchError } from './errors';
+import { InvalidParameterError, NumericInstabilityError, SizeMismatchError } from './errors';
 
 describe('InvalidParameterError', () => {
   it('describes the parameter, value and expectation', () => {
@@ -22,6 +22,21 @@ describe('SizeMismatchError', () => {
     expect(error.buffer).toBe('features');
     expect(error.actual).toBe(3);
     expect(error.expected).toBe(4);
+    expect(error).toBeInstanceOf(Error);
+  });
+});
+
+describe('NumericInstabilityError', () => {
+  it('names the component and the detail', () => {
+    const error = new NumericInstabilityError(
+      'RecurrentNetwork.forward',
+      'hidden state became non-finite',
+    );
+    expect(error.message).toBe(
+      'Numeric instability in RecurrentNetwork.forward: hidden state became non-finite.',
+    );
+    expect(error.name).toBe('NumericInstabilityError');
+    expect(error.component).toBe('RecurrentNetwork.forward');
     expect(error).toBeInstanceOf(Error);
   });
 });
