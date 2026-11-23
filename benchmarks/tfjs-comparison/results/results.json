@@ -1,0 +1,3510 @@
+{
+  "env": {
+    "date": "2026-11-23T15:25:15.925Z",
+    "node": "v24.11.1",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12500H",
+    "logicalCpus": 16,
+    "memoryGb": 15.283103942871094,
+    "platform": "linux 7.0.0-43-generic",
+    "pinnedCpu": null,
+    "quick": false,
+    "neuroLearn": "0.1.0",
+    "tfjs": "4.22.0",
+    "tfjsNode": "4.22.0",
+    "tfjsWasm": "4.22.0",
+    "footprintMb": {
+      "neuro-learn (dist)": 0.3069934844970703,
+      "tfjs (core, layers, cpu backend, data, converter)": 243.21137523651123,
+      "tfjs-backend-wasm": 12.591782569885254,
+      "tfjs-node (incl. native TensorFlow library)": 1149.8866319656372
+    }
+  },
+  "records": [
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 5.978826,
+        "rssMb": 1.078125,
+        "heapMb": 0.42449188232421875,
+        "externalMb": 2.022634506225586
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 509.88350551197414,
+          "min": 507.1715723967028,
+          "max": 522.3946031657497,
+          "cv": 0.008480194467265362
+        },
+        "callsPerRepeat": 501998,
+        "cpuNsPerSample": 511.46551712689427,
+        "cpuUtilization": 1.0000894777631089,
+        "heapBytesPerCall": 0,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.375,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 70.4140625
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 8.249269956017713e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 300.012273,
+        "rssMb": 86.77734375,
+        "heapMb": 45.06865692138672,
+        "externalMb": 15.995668411254883
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 23105.444058744994,
+          "min": 22498.56715620828,
+          "max": 32970.55166889186,
+          "cv": 0.1270546645043445
+        },
+        "callsPerRepeat": 3745,
+        "cpuNsPerSample": 31733.541017653166,
+        "cpuUtilization": 1.2959888839968872,
+        "heapBytesPerCall": 107023.68,
+        "gcCount": 77,
+        "gcPauseMsPer1MCalls": 546.5501549954478,
+        "gcCountPer1MCalls": 2284.527518172378,
+        "rssGrowthMb": 0.1484375,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 212.61328125
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 8.249269956017713e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 290.939482,
+        "rssMb": 75.359375,
+        "heapMb": 44.89210510253906,
+        "externalMb": 15.994720458984375
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 8666.650547821073,
+          "min": 8588.29409341791,
+          "max": 10033.778729714144,
+          "cv": 0.04918950268487885
+        },
+        "callsPerRepeat": 12139,
+        "cpuNsPerSample": 9320.65610383429,
+        "cpuUtilization": 1.0537702951195116,
+        "heapBytesPerCall": 49455.36,
+        "gcCount": 82,
+        "gcPauseMsPer1MCalls": 171.97963426834838,
+        "gcCountPer1MCalls": 750.5652122177371,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 196.07421875
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 8.249269956017713e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 332.067425,
+        "rssMb": 84.90234375,
+        "heapMb": 45.587623596191406,
+        "externalMb": 32.95085525512695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 27455.17124105012,
+          "min": 25945.932279236276,
+          "max": 33297.138424821,
+          "cv": 0.07369353870364084
+        },
+        "callsPerRepeat": 3352,
+        "cpuNsPerSample": 35709.49350304959,
+        "cpuUtilization": 1.2759158836532054,
+        "heapBytesPerCall": 81181.52,
+        "gcCount": 68,
+        "gcPauseMsPer1MCalls": 686.1585784862542,
+        "gcCountPer1MCalls": 2254.0440201538054,
+        "rssGrowthMb": 1.703125,
+        "externalGrowthMb": -0.0171051025390625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 212.96875
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.3615019878177037e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 319.651168,
+        "rssMb": 96.79296875,
+        "heapMb": 45.44366455078125,
+        "externalMb": 32.95085525512695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 12187.905202973128,
+          "min": 11894.712978845055,
+          "max": 14550.158719268153,
+          "cv": 0.06249440787547029
+        },
+        "callsPerRepeat": 8745,
+        "cpuNsPerSample": 14039.425703576648,
+        "cpuUtilization": 1.1248727847229527,
+        "heapBytesPerCall": 28091.68,
+        "gcCount": 60,
+        "gcPauseMsPer1MCalls": 142.58419423793703,
+        "gcCountPer1MCalls": 762.3403849818943,
+        "rssGrowthMb": 0,
+        "externalGrowthMb": -0.0236663818359375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 212.95703125
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.3615019878177037e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 359.758504,
+        "rssMb": 157.3671875,
+        "heapMb": 46.3154296875,
+        "externalMb": 12.174577713012695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 133474.8947368421,
+          "min": 124348.15789473684,
+          "max": 149869.2105263158,
+          "cv": 0.06704670741632253
+        },
+        "callsPerRepeat": 19,
+        "cpuNsPerSample": 192532.16374269006,
+        "cpuUtilization": 1.4145314394145267,
+        "heapBytesPerCall": 104941.04,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.25,
+        "externalGrowthMb": 0.1236114501953125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 275.0546875
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.9795439043512886e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 361.111384,
+        "rssMb": 154.6796875,
+        "heapMb": 46.15979766845703,
+        "externalMb": 10.172710418701172
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 52797.086956521736,
+          "min": 45053,
+          "max": 71670.43478260869,
+          "cv": 0.13580234213455863
+        },
+        "callsPerRepeat": 23,
+        "cpuNsPerSample": 120169.08212560386,
+        "cpuUtilization": 2.1305386832594304,
+        "heapBytesPerCall": 24303.12,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.10546875,
+        "externalGrowthMb": 0.0882720947265625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 276.4140625
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.9795439043512886e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 8.368166,
+        "rssMb": 0.80859375,
+        "heapMb": 0.4342041015625,
+        "externalMb": 2.095815658569336
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 18223.610491233154,
+          "min": 18188.35589045066,
+          "max": 18319.741921460656,
+          "cv": 0.0020345809880795806
+        },
+        "callsPerRepeat": 13802,
+        "cpuNsPerSample": 18237.711120771546,
+        "cpuUtilization": 1.0000559230937407,
+        "heapBytesPerCall": 0,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 71.73046875
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 8.197234235840511e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 321.458622,
+        "rssMb": 80.16796875,
+        "heapMb": 45.09510803222656,
+        "externalMb": 16.195131301879883
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 68699.17190889371,
+          "min": 66126.31073752712,
+          "max": 85787.01138828634,
+          "cv": 0.08240723821677577
+        },
+        "callsPerRepeat": 1844,
+        "cpuNsPerSample": 84907.14630031332,
+        "cpuUtilization": 1.1947509049088032,
+        "heapBytesPerCall": 226701.68,
+        "gcCount": 54,
+        "gcPauseMsPer1MCalls": 1029.3317057693341,
+        "gcCountPer1MCalls": 3253.7960954446853,
+        "rssGrowthMb": 3,
+        "externalGrowthMb": 0.05694580078125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 205.09375
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 9.181225824050898e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 301.481713,
+        "rssMb": 76.50390625,
+        "heapMb": 44.900726318359375,
+        "externalMb": 16.130218505859375
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 45248.78073770492,
+          "min": 44817.47267759563,
+          "max": 51064.143784153006,
+          "cv": 0.040175883538769074
+        },
+        "callsPerRepeat": 2928,
+        "cpuNsPerSample": 48980.5707346691,
+        "cpuUtilization": 1.060828705113987,
+        "heapBytesPerCall": 152362.4,
+        "gcCount": 30,
+        "gcPauseMsPer1MCalls": 309.034494957963,
+        "gcCountPer1MCalls": 1138.4335154826958,
+        "rssGrowthMb": 1.375,
+        "externalGrowthMb": 2.16680908203125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 197.73828125
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 9.181225824050898e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 321.319355,
+        "rssMb": 95.4765625,
+        "heapMb": 45.64337921142578,
+        "externalMb": 34.11262893676758
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 42085.236199575374,
+          "min": 40561.47983014862,
+          "max": 55501.32059447983,
+          "cv": 0.09931274996504809
+        },
+        "callsPerRepeat": 1884,
+        "cpuNsPerSample": 56276.303373437135,
+        "cpuUtilization": 1.2711165924191683,
+        "heapBytesPerCall": 115499.36,
+        "gcCount": 54,
+        "gcPauseMsPer1MCalls": 752.4788889381002,
+        "gcCountPer1MCalls": 3184.7133757961783,
+        "rssGrowthMb": 1.75,
+        "externalGrowthMb": -0.176239013671875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 215.23828125
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.955686047607543e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 327.897685,
+        "rssMb": 89.1171875,
+        "heapMb": 45.44696044921875,
+        "externalMb": 32.25477981567383
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 21553.625909248356,
+          "min": 21180.072739868374,
+          "max": 25218.12088673363,
+          "cv": 0.052998421112804894
+        },
+        "callsPerRepeat": 5774,
+        "cpuNsPerSample": 24233.30639264134,
+        "cpuUtilization": 1.0988886253287142,
+        "heapBytesPerCall": 42763.92,
+        "gcCount": 60,
+        "gcPauseMsPer1MCalls": 183.29544307081437,
+        "gcCountPer1MCalls": 1154.6010853250202,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": -0.10762786865234375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 204.9375
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.955686047607543e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 364.38095,
+        "rssMb": 156.23046875,
+        "heapMb": 46.37256622314453,
+        "externalMb": 11.372575759887695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 231764.27777777778,
+          "min": 214744.77777777778,
+          "max": 348712.8888888889,
+          "cv": 0.17459783978426363
+        },
+        "callsPerRepeat": 18,
+        "cpuNsPerSample": 448950.6172839506,
+        "cpuUtilization": 1.8011680375364112,
+        "heapBytesPerCall": 146036.88,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": 0.11248016357421875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 272.47265625
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.268897181829544e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 352.849203,
+        "rssMb": 162.8359375,
+        "heapMb": 46.171592712402344,
+        "externalMb": 11.307390213012695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 84893.45454545454,
+          "min": 78224.63636363637,
+          "max": 127526,
+          "cv": 0.17094375065241693
+        },
+        "callsPerRepeat": 22,
+        "cpuNsPerSample": 180348.48484848486,
+        "cpuUtilization": 1.9546579994415576,
+        "heapBytesPerCall": 36980.08,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0,
+        "externalGrowthMb": 0.09893798828125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 278.20703125
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.268897181829544e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-forward-batch",
+      "mode": "perf",
+      "load": {
+        "ms": 7.602057,
+        "rssMb": 0.453125,
+        "heapMb": 0.68017578125,
+        "externalMb": 2.111379623413086
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 19374.07132523148,
+          "min": 19321.822193287036,
+          "max": 19443.130497685186,
+          "cv": 0.0018320647923662239
+        },
+        "callsPerRepeat": 27,
+        "cpuNsPerSample": 19382.925025720164,
+        "cpuUtilization": 1.0001385801083573,
+        "heapBytesPerCall": 0,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.25,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 75.66796875
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-forward-batch",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.1655227938334178e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-forward-batch",
+      "mode": "perf",
+      "load": {
+        "ms": 307.651341,
+        "rssMb": 81.3984375,
+        "heapMb": 45.093231201171875,
+        "externalMb": 16.210756301879883
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 32512.090959821428,
+          "min": 32285.90066964286,
+          "max": 38008.021205357145,
+          "cv": 0.05118341562561579
+        },
+        "callsPerRepeat": 7,
+        "cpuNsPerSample": 37688.86408730159,
+        "cpuUtilization": 1.1238390124419106,
+        "heapBytesPerCall": 32935.92,
+        "gcCount": 6,
+        "gcPauseMsPer1MCalls": 66519.6030149384,
+        "gcCountPer1MCalls": 95238.09523809524,
+        "rssGrowthMb": 0.375,
+        "externalGrowthMb": -6.23431396484375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 253.9765625
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-forward-batch",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.4685432048189284e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-forward-batch",
+      "mode": "perf",
+      "load": {
+        "ms": 349.524011,
+        "rssMb": 78.61328125,
+        "heapMb": 44.93022155761719,
+        "externalMb": 16.145843505859375
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 32203.535807291668,
+          "min": 31829.590494791668,
+          "max": 39810.923828125,
+          "cv": 0.07307560297824559
+        },
+        "callsPerRepeat": 6,
+        "cpuNsPerSample": 35687.42766203704,
+        "cpuUtilization": 1.0759470938130153,
+        "heapBytesPerCall": 48040.8,
+        "gcCount": 2,
+        "gcPauseMsPer1MCalls": 28892.944394438353,
+        "gcCountPer1MCalls": 37037.03703703704,
+        "rssGrowthMb": 0.875,
+        "externalGrowthMb": -32.34368896484375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 221.54296875
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-forward-batch",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.4685432048189284e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-forward-batch",
+      "mode": "perf",
+      "load": {
+        "ms": 339.489733,
+        "rssMb": 87.77734375,
+        "heapMb": 45.65254211425781,
+        "externalMb": 32.27040481567383
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 3943.329839939024,
+          "min": 3913.478944359756,
+          "max": 4135.966463414634,
+          "cv": 0.020877956056974685
+        },
+        "callsPerRepeat": 41,
+        "cpuNsPerSample": 4646.055640243902,
+        "cpuUtilization": 1.1581684426027925,
+        "heapBytesPerCall": 115728.32,
+        "gcCount": 4,
+        "gcPauseMsPer1MCalls": 8213.257442321881,
+        "gcCountPer1MCalls": 10840.108401084011,
+        "rssGrowthMb": 0.375,
+        "externalGrowthMb": 15.199504852294922,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 222.01953125
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-forward-batch",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 5.289245753048455e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-forward-batch",
+      "mode": "perf",
+      "load": {
+        "ms": 331.545744,
+        "rssMb": 84.8515625,
+        "heapMb": 45.439186096191406,
+        "externalMb": 32.20518493652344
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 3654.926991421569,
+          "min": 3641.6416513480394,
+          "max": 3750.056587009804,
+          "cv": 0.010380232685540974
+        },
+        "callsPerRepeat": 255,
+        "cpuNsPerSample": 3784.9894471677558,
+        "cpuUtilization": 1.0284998385347057,
+        "heapBytesPerCall": 42859.28,
+        "gcCount": 3,
+        "gcPauseMsPer1MCalls": 729.7376889029359,
+        "gcCountPer1MCalls": 1307.18954248366,
+        "rssGrowthMb": 26,
+        "externalGrowthMb": -10.131805419921875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 208.72265625
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-forward-batch",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 5.289245753048455e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-forward-batch",
+      "mode": "perf",
+      "load": {
+        "ms": 363.042652,
+        "rssMb": 158.77734375,
+        "heapMb": 46.369384765625,
+        "externalMb": 11.388200759887695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 1619.9449573863637,
+          "min": 1498.9914772727273,
+          "max": 4991.875710227273,
+          "cv": 0.49626128256171254
+        },
+        "callsPerRepeat": 11,
+        "cpuNsPerSample": 4753.748421717171,
+        "cpuUtilization": 2.2291820184781628,
+        "heapBytesPerCall": 146218.8,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": 0.867218017578125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 278.828125
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-forward-batch",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 4.552052714212884e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-forward-batch",
+      "mode": "perf",
+      "load": {
+        "ms": 356.541791,
+        "rssMb": 165.01953125,
+        "heapMb": 46.173789978027344,
+        "externalMb": 11.323015213012695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 881.5875651041666,
+          "min": 828.4918619791666,
+          "max": 1054.4671223958333,
+          "cv": 0.08788677924664164
+        },
+        "callsPerRepeat": 12,
+        "cpuNsPerSample": 2843.207465277778,
+        "cpuUtilization": 3.073890206330613,
+        "heapBytesPerCall": 36817.12,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": -10.48431396484375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 290.52734375
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-forward-batch",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 4.552052714212884e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "population-forward",
+      "mode": "perf",
+      "load": {
+        "ms": 13.639522,
+        "rssMb": 2.28515625,
+        "heapMb": 1.6202545166015625,
+        "externalMb": 2.6213417053222656
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 647.0865739130435,
+          "min": 646.6315130434782,
+          "max": 648.5935378881987,
+          "cv": 0.0008981904806797397
+        },
+        "callsPerRepeat": 805,
+        "cpuNsPerSample": 647.5094547964113,
+        "cpuUtilization": 1.0000048597547821,
+        "heapBytesPerCall": 0,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.40234375,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 75.9609375
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "population-forward",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.2459309095547155e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "population-forward",
+      "mode": "perf",
+      "load": {
+        "ms": 340.236583,
+        "rssMb": 116.4921875,
+        "heapMb": 52.14979553222656,
+        "externalMb": 17.53653335571289
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 34154.231,
+          "min": 32133.9725,
+          "max": 48519.9755,
+          "cv": 0.13035019314041937
+        },
+        "callsPerRepeat": 4,
+        "cpuNsPerSample": 50571.333333333336,
+        "cpuUtilization": 1.4000022783695805,
+        "heapBytesPerCall": 1082110.16,
+        "gcCount": 23,
+        "gcPauseMsPer1MCalls": 696317.333314154,
+        "gcCountPer1MCalls": 638888.8888888889,
+        "rssGrowthMb": -0.015625,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 354.89453125
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "population-forward",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.2459309095547155e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "population-forward",
+      "mode": "perf",
+      "load": {
+        "ms": 299.187633,
+        "rssMb": 78.1953125,
+        "heapMb": 45.49913024902344,
+        "externalMb": 18.104061126708984
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 938.3940799999999,
+          "min": 932.3667680000001,
+          "max": 1002.134512,
+          "cv": 0.021657131341561782
+        },
+        "callsPerRepeat": 375,
+        "cpuNsPerSample": 1054.930962962963,
+        "cpuUtilization": 1.1107189838212959,
+        "heapBytesPerCall": 110322.72,
+        "gcCount": 17,
+        "gcPauseMsPer1MCalls": 3442.944292668943,
+        "gcCountPer1MCalls": 5037.0370370370365,
+        "rssGrowthMb": 3.9765625,
+        "externalGrowthMb": -7.0584869384765625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 236.71875
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "population-forward",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.2459309095547155e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "population-forward",
+      "mode": "perf",
+      "load": {
+        "ms": 371.513072,
+        "rssMb": 112.77734375,
+        "heapMb": 52.39856719970703,
+        "externalMb": 31.437744140625
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 40502.80133333334,
+          "min": 37734.30533333334,
+          "max": 53901.096666666665,
+          "cv": 0.10920469156687808
+        },
+        "callsPerRepeat": 3,
+        "cpuNsPerSample": 59980.148148148146,
+        "cpuUtilization": 1.411897136228665,
+        "heapBytesPerCall": 493519.52,
+        "gcCount": 17,
+        "gcPauseMsPer1MCalls": 847354.4807897673,
+        "gcCountPer1MCalls": 629629.6296296297,
+        "rssGrowthMb": 0.44140625,
+        "externalGrowthMb": 0.030178070068359375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 368.73046875
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "population-forward",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.7367869332172177e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "population-forward",
+      "mode": "perf",
+      "load": {
+        "ms": 344.570091,
+        "rssMb": 86.19921875,
+        "heapMb": 46.047874450683594,
+        "externalMb": 34.35179138183594
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 541.5938426395938,
+          "min": 540.1332360406092,
+          "max": 560.3479517766498,
+          "cv": 0.012151969420187002
+        },
+        "callsPerRepeat": 788,
+        "cpuNsPerSample": 565.9512126339538,
+        "cpuUtilization": 1.0344011316318886,
+        "heapBytesPerCall": 28344.24,
+        "gcCount": 8,
+        "gcPauseMsPer1MCalls": 648.5249588735617,
+        "gcCountPer1MCalls": 1128.0315848843768,
+        "rssGrowthMb": 3.078125,
+        "externalGrowthMb": -16.73870849609375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 211.45703125
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "population-forward",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.7367869332172177e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "population-forward",
+      "mode": "perf",
+      "load": {
+        "ms": 410.77166,
+        "rssMb": 198.5390625,
+        "heapMb": 53.5645751953125,
+        "externalMb": 12.955642700195312
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 154357.836,
+          "min": 140306.312,
+          "max": 175608.426,
+          "cv": 0.06791365271698388
+        },
+        "callsPerRepeat": 1,
+        "cpuNsPerSample": 181406.22222222222,
+        "cpuUtilization": 1.1541815438941527,
+        "heapBytesPerCall": 539899.84,
+        "gcCount": 8,
+        "gcPauseMsPer1MCalls": 1659288.112488058,
+        "gcCountPer1MCalls": 888888.8888888889,
+        "rssGrowthMb": 1.0703125,
+        "externalGrowthMb": -0.8321075439453125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 444.453125
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "population-forward",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 4.292022846019705e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "population-forward",
+      "mode": "perf",
+      "load": {
+        "ms": 361.373596,
+        "rssMb": 159.67578125,
+        "heapMb": 46.802467346191406,
+        "externalMb": 14.947736740112305
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 524.2313636363637,
+          "min": 492.54054545454545,
+          "max": 585.9276363636363,
+          "cv": 0.06254909417674809
+        },
+        "callsPerRepeat": 22,
+        "cpuNsPerSample": 2772.050505050505,
+        "cpuUtilization": 5.133884743031327,
+        "heapBytesPerCall": 24418.56,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": -8.2138671875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 273.1484375
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "population-forward",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 4.292022846019705e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-train-small",
+      "mode": "perf",
+      "load": {
+        "ms": 5.822106,
+        "rssMb": 0.9453125,
+        "heapMb": 0.4422607421875,
+        "externalMb": 2.0151538848876953
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 1983.3251531283072,
+          "min": 1975.2150210050347,
+          "max": 1998.4499406728025,
+          "cv": 0.0035417645281423204
+        },
+        "callsPerRepeat": 124732,
+        "cpuNsPerSample": 1988.3287546276995,
+        "cpuUtilization": 0.9999663974045647,
+        "heapBytesPerCall": 16,
+        "gcCount": 4,
+        "gcPauseMsPer1MCalls": 1.1490306345501622,
+        "gcCountPer1MCalls": 3.5631950457336083,
+        "rssGrowthMb": 0.75,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 72.359375
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-train-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.0930753098009602,
+            "referenceLoss": 1.0930753098009602
+          },
+          {
+            "step": 50,
+            "loss": 0.0788409919202258,
+            "referenceLoss": 0.07884099280527533
+          },
+          {
+            "step": 200,
+            "loss": 0.0232058609129464,
+            "referenceLoss": 0.023205863595387073
+          },
+          {
+            "step": 1000,
+            "loss": 0.005866223962695043,
+            "referenceLoss": 0.0058662243427675
+          },
+          {
+            "step": 2000,
+            "loss": 0.005992753789333204,
+            "referenceLoss": 0.0059927580454264846
+          }
+        ],
+        "maxWeightDifference": 0.0000014029561934969514,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-train-small",
+      "mode": "perf",
+      "load": {
+        "ms": 298.462959,
+        "rssMb": 80.6015625,
+        "heapMb": 45.04145812988281,
+        "externalMb": 15.99490737915039
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 168910.11363636365,
+          "min": 153693.8409090909,
+          "max": 249295.22727272726,
+          "cv": 0.17359039960288458
+        },
+        "callsPerRepeat": 44,
+        "cpuNsPerSample": 409250,
+        "cpuUtilization": 2.1385284193500858,
+        "heapBytesPerCall": 385605.68,
+        "gcCount": 2,
+        "gcPauseMsPer1MCalls": 7302.010093222965,
+        "gcCountPer1MCalls": 5050.505050505051,
+        "rssGrowthMb": -3.03515625,
+        "externalGrowthMb": 0.24591064453125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 313.40234375
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-train-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.0930753098009602,
+            "referenceLoss": 1.0930753098009602
+          },
+          {
+            "step": 50,
+            "loss": 0.07884099217326092,
+            "referenceLoss": 0.07884099280527533
+          },
+          {
+            "step": 200,
+            "loss": 0.023205861977422703,
+            "referenceLoss": 0.023205863595387073
+          },
+          {
+            "step": 1000,
+            "loss": 0.005866222930317634,
+            "referenceLoss": 0.0058662243427675
+          },
+          {
+            "step": 2000,
+            "loss": 0.005992755482904562,
+            "referenceLoss": 0.0059927580454264846
+          }
+        ],
+        "maxWeightDifference": 0.0000012241422591707796,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-train-small",
+      "mode": "perf",
+      "load": {
+        "ms": 287.423154,
+        "rssMb": 79.25,
+        "heapMb": 44.896202087402344,
+        "externalMb": 15.99368667602539
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 113067.25110132158,
+          "min": 103738.53524229075,
+          "max": 137574.2830396476,
+          "cv": 0.08404871403926985
+        },
+        "callsPerRepeat": 908,
+        "cpuNsPerSample": 191689.30494371022,
+        "cpuUtilization": 1.6608171909509797,
+        "heapBytesPerCall": 320415.84,
+        "gcCount": 35,
+        "gcPauseMsPer1MCalls": 3871.7794922698786,
+        "gcCountPer1MCalls": 4282.917278511992,
+        "rssGrowthMb": -1.2890625,
+        "externalGrowthMb": 0.05181884765625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 292.8828125
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-train-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.0930753098009602,
+            "referenceLoss": 1.0930753098009602
+          },
+          {
+            "step": 50,
+            "loss": 0.07884099217326092,
+            "referenceLoss": 0.07884099280527533
+          },
+          {
+            "step": 200,
+            "loss": 0.023205861977422703,
+            "referenceLoss": 0.023205863595387073
+          },
+          {
+            "step": 1000,
+            "loss": 0.005866222930317634,
+            "referenceLoss": 0.0058662243427675
+          },
+          {
+            "step": 2000,
+            "loss": 0.005992755482904562,
+            "referenceLoss": 0.0059927580454264846
+          }
+        ],
+        "maxWeightDifference": 0.0000012241422591707796,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-train-small",
+      "mode": "perf",
+      "load": {
+        "ms": 327.592349,
+        "rssMb": 89.64453125,
+        "heapMb": 45.598594665527344,
+        "externalMb": 32.95037078857422
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 208825.79411764705,
+          "min": 191747.20588235295,
+          "max": 235467.67647058822,
+          "cv": 0.05841044650586991
+        },
+        "callsPerRepeat": 34,
+        "cpuNsPerSample": 409251.6339869281,
+        "cpuUtilization": 1.853232525668501,
+        "heapBytesPerCall": 336680.08,
+        "gcCount": 1,
+        "gcPauseMsPer1MCalls": 3600.385624404047,
+        "gcCountPer1MCalls": 3267.97385620915,
+        "rssGrowthMb": -2.47265625,
+        "externalGrowthMb": 0.00463104248046875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 307.06640625
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-train-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.0930753098009602,
+            "referenceLoss": 1.0930753098009602
+          },
+          {
+            "step": 50,
+            "loss": 0.07884099349348625,
+            "referenceLoss": 0.07884099280527533
+          },
+          {
+            "step": 200,
+            "loss": 0.0232058592177008,
+            "referenceLoss": 0.023205863595387073
+          },
+          {
+            "step": 1000,
+            "loss": 0.0058662225792333895,
+            "referenceLoss": 0.0058662243427675
+          },
+          {
+            "step": 2000,
+            "loss": 0.005992752280424598,
+            "referenceLoss": 0.0059927580454264846
+          }
+        ],
+        "maxWeightDifference": 0.0000011049329696199983,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-train-small",
+      "mode": "perf",
+      "load": {
+        "ms": 336.726877,
+        "rssMb": 86.54296875,
+        "heapMb": 45.454063415527344,
+        "externalMb": 32.95037078857422
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 197063,
+          "min": 155077.40476190476,
+          "max": 261524.2142857143,
+          "cv": 0.17030134328778496
+        },
+        "callsPerRepeat": 42,
+        "cpuNsPerSample": 343037.037037037,
+        "cpuUtilization": 1.7608788978583094,
+        "heapBytesPerCall": 254270,
+        "gcCount": 1,
+        "gcPauseMsPer1MCalls": 1514.6455003155602,
+        "gcCountPer1MCalls": 2645.5026455026455,
+        "rssGrowthMb": -0.890625,
+        "externalGrowthMb": 0.09345626831054688,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 289.95703125
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-train-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.0930753098009602,
+            "referenceLoss": 1.0930753098009602
+          },
+          {
+            "step": 50,
+            "loss": 0.0788409939066355,
+            "referenceLoss": 0.07884099280527533
+          },
+          {
+            "step": 200,
+            "loss": 0.02320586094029722,
+            "referenceLoss": 0.023205863595387073
+          },
+          {
+            "step": 1000,
+            "loss": 0.005866223276060092,
+            "referenceLoss": 0.0058662243427675
+          },
+          {
+            "step": 2000,
+            "loss": 0.005992754470784069,
+            "referenceLoss": 0.0059927580454264846
+          }
+        ],
+        "maxWeightDifference": 9.85723680069217e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-train-small",
+      "mode": "perf",
+      "load": {
+        "ms": 361.742233,
+        "rssMb": 152.140625,
+        "heapMb": 46.32063293457031,
+        "externalMb": 10.172624588012695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 524320.8888888889,
+          "min": 521147.3333333333,
+          "max": 612709.5555555555,
+          "cv": 0.05291890408344006
+        },
+        "callsPerRepeat": 9,
+        "cpuNsPerSample": 718234.5679012346,
+        "cpuUtilization": 1.3210357590667112,
+        "heapBytesPerCall": 341394.08,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -1.26953125,
+        "externalGrowthMb": 0.09524917602539062,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 362.328125
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-train-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.0930753098009602,
+            "referenceLoss": 1.0930753098009602
+          },
+          {
+            "step": 50,
+            "loss": 0.07884098939636372,
+            "referenceLoss": 0.07884099280527533
+          },
+          {
+            "step": 200,
+            "loss": 0.023205855919495966,
+            "referenceLoss": 0.023205863595387073
+          },
+          {
+            "step": 1000,
+            "loss": 0.005866221827502882,
+            "referenceLoss": 0.0058662243427675
+          },
+          {
+            "step": 2000,
+            "loss": 0.0059927558014945025,
+            "referenceLoss": 0.0059927580454264846
+          }
+        ],
+        "maxWeightDifference": 0.0000011943399367830843,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-train-small",
+      "mode": "perf",
+      "load": {
+        "ms": 362.011604,
+        "rssMb": 161.37109375,
+        "heapMb": 46.48020935058594,
+        "externalMb": 10.172222137451172
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 393403.1818181818,
+          "min": 375965,
+          "max": 574846.0909090909,
+          "cv": 0.13962493125276373
+        },
+        "callsPerRepeat": 11,
+        "cpuNsPerSample": 591979.7979797979,
+        "cpuUtilization": 1.3996494165516293,
+        "heapBytesPerCall": 232350.64,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -0.40234375,
+        "externalGrowthMb": 0.12815475463867188,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 363.609375
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-train-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.0930753098009602,
+            "referenceLoss": 1.0930753098009602
+          },
+          {
+            "step": 50,
+            "loss": 0.07884098939636372,
+            "referenceLoss": 0.07884099280527533
+          },
+          {
+            "step": 200,
+            "loss": 0.023205855919495966,
+            "referenceLoss": 0.023205863595387073
+          },
+          {
+            "step": 1000,
+            "loss": 0.005866221827502882,
+            "referenceLoss": 0.0058662243427675
+          },
+          {
+            "step": 2000,
+            "loss": 0.0059927558014945025,
+            "referenceLoss": 0.0059927580454264846
+          }
+        ],
+        "maxWeightDifference": 0.0000011943399367830843,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-train-large",
+      "mode": "perf",
+      "load": {
+        "ms": 7.416172,
+        "rssMb": 0.87109375,
+        "heapMb": 0.4415740966796875,
+        "externalMb": 2.2522964477539062
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 94688.0902014652,
+          "min": 94460.53113553114,
+          "max": 99185.32051282052,
+          "cv": 0.014898852519574688
+        },
+        "callsPerRepeat": 2184,
+        "cpuNsPerSample": 95295.12617012617,
+        "cpuUtilization": 1.0007540870785354,
+        "heapBytesPerCall": 16,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 75.68359375
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "mlp-train-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.5864926468951777,
+            "referenceLoss": 1.5864926468951777
+          },
+          {
+            "step": 50,
+            "loss": 0.5367479904919508,
+            "referenceLoss": 0.5367480361074005
+          },
+          {
+            "step": 200,
+            "loss": 0.23638419260069446,
+            "referenceLoss": 0.23638419574600933
+          },
+          {
+            "step": 1000,
+            "loss": 0.06153618253103651,
+            "referenceLoss": 0.06153618603433229
+          },
+          {
+            "step": 2000,
+            "loss": 0.025963369000960537,
+            "referenceLoss": 0.025963367564930492
+          }
+        ],
+        "maxWeightDifference": 9.282394728415966e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-train-large",
+      "mode": "perf",
+      "load": {
+        "ms": 311.861537,
+        "rssMb": 81.1171875,
+        "heapMb": 45.090065002441406,
+        "externalMb": 16.191225051879883
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 815482.5833333334,
+          "min": 761615.2916666666,
+          "max": 1201603.1666666667,
+          "cv": 0.1502423005156841
+        },
+        "callsPerRepeat": 24,
+        "cpuNsPerSample": 1209699.0740740742,
+        "cpuUtilization": 1.40576500465103,
+        "heapBytesPerCall": 255809.12,
+        "gcCount": 7,
+        "gcPauseMsPer1MCalls": 20371.59722574331,
+        "gcCountPer1MCalls": 32407.407407407405,
+        "rssGrowthMb": 1.19921875,
+        "externalGrowthMb": -3.67791748046875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 283.05859375
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "mlp-train-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.5864926468951777,
+            "referenceLoss": 1.5864926468951777
+          },
+          {
+            "step": 50,
+            "loss": 0.5367480141046549,
+            "referenceLoss": 0.5367480361074005
+          },
+          {
+            "step": 200,
+            "loss": 0.23638418353908935,
+            "referenceLoss": 0.23638419574600933
+          },
+          {
+            "step": 1000,
+            "loss": 0.061536184132863825,
+            "referenceLoss": 0.06153618603433229
+          },
+          {
+            "step": 2000,
+            "loss": 0.0259633671618192,
+            "referenceLoss": 0.025963367564930492
+          }
+        ],
+        "maxWeightDifference": 9.038280211481897e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-train-large",
+      "mode": "perf",
+      "load": {
+        "ms": 300.463374,
+        "rssMb": 84.00390625,
+        "heapMb": 44.91827392578125,
+        "externalMb": 16.126039505004883
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 690391.6774193548,
+          "min": 659735.0645161291,
+          "max": 1011394,
+          "cv": 0.14239664326526508
+        },
+        "callsPerRepeat": 31,
+        "cpuNsPerSample": 1050749.1039426522,
+        "cpuUtilization": 1.4210819427505132,
+        "heapBytesPerCall": 113282.08,
+        "gcCount": 18,
+        "gcPauseMsPer1MCalls": 22658.494638285756,
+        "gcCountPer1MCalls": 64516.12903225806,
+        "rssGrowthMb": 1.5625,
+        "externalGrowthMb": -2.69744873046875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 273.4921875
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "mlp-train-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.5864926468951777,
+            "referenceLoss": 1.5864926468951777
+          },
+          {
+            "step": 50,
+            "loss": 0.5367480141046549,
+            "referenceLoss": 0.5367480361074005
+          },
+          {
+            "step": 200,
+            "loss": 0.23638418353908935,
+            "referenceLoss": 0.23638419574600933
+          },
+          {
+            "step": 1000,
+            "loss": 0.061536184132863825,
+            "referenceLoss": 0.06153618603433229
+          },
+          {
+            "step": 2000,
+            "loss": 0.0259633671618192,
+            "referenceLoss": 0.025963367564930492
+          }
+        ],
+        "maxWeightDifference": 9.038280211481897e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-train-large",
+      "mode": "perf",
+      "load": {
+        "ms": 335.600568,
+        "rssMb": 85.296875,
+        "heapMb": 45.655921936035156,
+        "externalMb": 32.250877380371094
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 475973.34375,
+          "min": 447687.25,
+          "max": 564091.28125,
+          "cv": 0.07020808086825604
+        },
+        "callsPerRepeat": 32,
+        "cpuNsPerSample": 894881.9444444445,
+        "cpuUtilization": 1.805258700115392,
+        "heapBytesPerCall": 475730.72,
+        "gcCount": 2,
+        "gcPauseMsPer1MCalls": 11559.892368192473,
+        "gcCountPer1MCalls": 6944.444444444444,
+        "rssGrowthMb": -0.60546875,
+        "externalGrowthMb": 0.026767730712890625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 293.03125
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "mlp-train-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.5864926468951777,
+            "referenceLoss": 1.5864926468951777
+          },
+          {
+            "step": 50,
+            "loss": 0.5367479606800635,
+            "referenceLoss": 0.5367480361074005
+          },
+          {
+            "step": 200,
+            "loss": 0.23638418675233097,
+            "referenceLoss": 0.23638419574600933
+          },
+          {
+            "step": 1000,
+            "loss": 0.06153617242647751,
+            "referenceLoss": 0.06153618603433229
+          },
+          {
+            "step": 2000,
+            "loss": 0.02596336353707202,
+            "referenceLoss": 0.025963367564930492
+          }
+        ],
+        "maxWeightDifference": 9.580620095595016e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-train-large",
+      "mode": "perf",
+      "load": {
+        "ms": 359.986992,
+        "rssMb": 90.7265625,
+        "heapMb": 45.46885681152344,
+        "externalMb": 32.250877380371094
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 368486.4,
+          "min": 330037.56,
+          "max": 470262.76,
+          "cv": 0.10659035664520396
+        },
+        "callsPerRepeat": 25,
+        "cpuNsPerSample": 633671.1111111111,
+        "cpuUtilization": 1.6161835820228414,
+        "heapBytesPerCall": 349355.36,
+        "gcCount": 1,
+        "gcPauseMsPer1MCalls": 3396.1422244707746,
+        "gcCountPer1MCalls": 4444.444444444444,
+        "rssGrowthMb": -0.40625,
+        "externalGrowthMb": 0.0412750244140625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 286.54296875
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "mlp-train-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.5864926468951777,
+            "referenceLoss": 1.5864926468951777
+          },
+          {
+            "step": 50,
+            "loss": 0.5367479837545601,
+            "referenceLoss": 0.5367480361074005
+          },
+          {
+            "step": 200,
+            "loss": 0.23638417572502265,
+            "referenceLoss": 0.23638419574600933
+          },
+          {
+            "step": 1000,
+            "loss": 0.06153617223530772,
+            "referenceLoss": 0.06153618603433229
+          },
+          {
+            "step": 2000,
+            "loss": 0.025963353025187253,
+            "referenceLoss": 0.025963367564930492
+          }
+        ],
+        "maxWeightDifference": 9.282596871718063e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-train-large",
+      "mode": "perf",
+      "load": {
+        "ms": 388.64395,
+        "rssMb": 166.41015625,
+        "heapMb": 46.48493194580078,
+        "externalMb": 11.368669509887695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 948553.7777777778,
+          "min": 876392.5555555555,
+          "max": 1192455.7777777778,
+          "cv": 0.09351314478289997
+        },
+        "callsPerRepeat": 9,
+        "cpuNsPerSample": 1435308.6419753085,
+        "cpuUtilization": 1.485141520599434,
+        "heapBytesPerCall": 491647.04,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -0.92578125,
+        "externalGrowthMb": -0.00397491455078125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 345.55078125
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "mlp-train-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.5864926468951777,
+            "referenceLoss": 1.5864926468951777
+          },
+          {
+            "step": 50,
+            "loss": 0.536747843013273,
+            "referenceLoss": 0.5367480361074005
+          },
+          {
+            "step": 200,
+            "loss": 0.23638415411736738,
+            "referenceLoss": 0.23638419574600933
+          },
+          {
+            "step": 1000,
+            "loss": 0.06153616640318811,
+            "referenceLoss": 0.06153618603433229
+          },
+          {
+            "step": 2000,
+            "loss": 0.02596336989277511,
+            "referenceLoss": 0.025963367564930492
+          }
+        ],
+        "maxWeightDifference": 8.368922021217973e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-train-large",
+      "mode": "perf",
+      "load": {
+        "ms": 374.705474,
+        "rssMb": 173.04296875,
+        "heapMb": 46.27111053466797,
+        "externalMb": 11.303483963012695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 625931.7,
+          "min": 617367.6,
+          "max": 827818.6,
+          "cv": 0.09558036680190264
+        },
+        "callsPerRepeat": 10,
+        "cpuNsPerSample": 1043511.1111111111,
+        "cpuUtilization": 1.4947124285236573,
+        "heapBytesPerCall": 322471.28,
+        "gcCount": 1,
+        "gcPauseMsPer1MCalls": 33945.82230183813,
+        "gcCountPer1MCalls": 11111.111111111111,
+        "rssGrowthMb": 1.046875,
+        "externalGrowthMb": 0.11629486083984375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 302.5859375
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "mlp-train-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 1.5864926468951777,
+            "referenceLoss": 1.5864926468951777
+          },
+          {
+            "step": 50,
+            "loss": 0.536747843013273,
+            "referenceLoss": 0.5367480361074005
+          },
+          {
+            "step": 200,
+            "loss": 0.23638415411736738,
+            "referenceLoss": 0.23638419574600933
+          },
+          {
+            "step": 1000,
+            "loss": 0.06153616640318811,
+            "referenceLoss": 0.06153618603433229
+          },
+          {
+            "step": 2000,
+            "loss": 0.02596336989277511,
+            "referenceLoss": 0.025963367564930492
+          }
+        ],
+        "maxWeightDifference": 8.368922021217973e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "delta-rule-small",
+      "mode": "perf",
+      "load": {
+        "ms": 5.704955,
+        "rssMb": 1.125,
+        "heapMb": 0.4090423583984375,
+        "externalMb": 2.020742416381836
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 244.201161865368,
+          "min": 240.15130597394585,
+          "max": 245.81276166872485,
+          "cv": 0.007512675180535114
+        },
+        "callsPerRepeat": 933671,
+        "cpuNsPerSample": 243.46441805161203,
+        "cpuUtilization": 1.0000351950782493,
+        "heapBytesPerCall": 0,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 73.1953125
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "delta-rule-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.11149844605509955,
+            "referenceLoss": 0.11149844605509955
+          },
+          {
+            "step": 50,
+            "loss": 0.009639732703935163,
+            "referenceLoss": 0.00963973302511282
+          },
+          {
+            "step": 200,
+            "loss": 0.0010322476810873005,
+            "referenceLoss": 0.00103224743930376
+          },
+          {
+            "step": 1000,
+            "loss": 6.608613776140084e-8,
+            "referenceLoss": 6.608522795843456e-8
+          },
+          {
+            "step": 2000,
+            "loss": 9.333548094466718e-13,
+            "referenceLoss": 9.464165801464362e-13
+          }
+        ],
+        "maxWeightDifference": 2.805121181170822e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "delta-rule-small",
+      "mode": "perf",
+      "load": {
+        "ms": 297.95258,
+        "rssMb": 76.33203125,
+        "heapMb": 45.017555236816406,
+        "externalMb": 15.992523193359375
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 71137.54928571428,
+          "min": 68676.495,
+          "max": 91559.95285714285,
+          "cv": 0.09128996727204679
+        },
+        "callsPerRepeat": 1400,
+        "cpuNsPerSample": 131679.2857142857,
+        "cpuUtilization": 1.7627524894179354,
+        "heapBytesPerCall": 172560,
+        "gcCount": 31,
+        "gcPauseMsPer1MCalls": 3804.7837276780415,
+        "gcCountPer1MCalls": 2460.3174603174602,
+        "rssGrowthMb": -3.140625,
+        "externalGrowthMb": -0.19598388671875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 318.0703125
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "delta-rule-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.11149844605509955,
+            "referenceLoss": 0.11149844605509955
+          },
+          {
+            "step": 50,
+            "loss": 0.009639732771360852,
+            "referenceLoss": 0.00963973302511282
+          },
+          {
+            "step": 200,
+            "loss": 0.0010322477959033394,
+            "referenceLoss": 0.00103224743930376
+          },
+          {
+            "step": 1000,
+            "loss": 6.608005077478034e-8,
+            "referenceLoss": 6.608522795843456e-8
+          },
+          {
+            "step": 2000,
+            "loss": 9.339278405751778e-13,
+            "referenceLoss": 9.464165801464362e-13
+          }
+        ],
+        "maxWeightDifference": 4.5495440290088673e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "delta-rule-small",
+      "mode": "perf",
+      "load": {
+        "ms": 309.103808,
+        "rssMb": 78.41015625,
+        "heapMb": 44.890419006347656,
+        "externalMb": 15.992279052734375
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 45034.805555555555,
+          "min": 42432.10974499089,
+          "max": 57407.40573770492,
+          "cv": 0.09140236177631965
+        },
+        "callsPerRepeat": 2196,
+        "cpuNsPerSample": 78425.52114956487,
+        "cpuUtilization": 1.6958918344690388,
+        "heapBytesPerCall": 121381.28,
+        "gcCount": 33,
+        "gcPauseMsPer1MCalls": 1723.1606479309708,
+        "gcCountPer1MCalls": 1669.7024893746207,
+        "rssGrowthMb": 0.59375,
+        "externalGrowthMb": 0.25445556640625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 297.203125
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "delta-rule-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.11149844605509955,
+            "referenceLoss": 0.11149844605509955
+          },
+          {
+            "step": 50,
+            "loss": 0.009639732771360852,
+            "referenceLoss": 0.00963973302511282
+          },
+          {
+            "step": 200,
+            "loss": 0.0010322477959033394,
+            "referenceLoss": 0.00103224743930376
+          },
+          {
+            "step": 1000,
+            "loss": 6.608005077478034e-8,
+            "referenceLoss": 6.608522795843456e-8
+          },
+          {
+            "step": 2000,
+            "loss": 9.339278405751778e-13,
+            "referenceLoss": 9.464165801464362e-13
+          }
+        ],
+        "maxWeightDifference": 4.5495440290088673e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "delta-rule-small",
+      "mode": "perf",
+      "load": {
+        "ms": 347.545597,
+        "rssMb": 87.55078125,
+        "heapMb": 45.58808898925781,
+        "externalMb": 32.94757080078125
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 101257.05405405405,
+          "min": 98340.94594594595,
+          "max": 141159.16216216216,
+          "cv": 0.12034294837199493
+        },
+        "callsPerRepeat": 37,
+        "cpuNsPerSample": 185828.82882882882,
+        "cpuUtilization": 1.712897639522365,
+        "heapBytesPerCall": 163741.76,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -3.09375,
+        "externalGrowthMb": -0.000244140625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 307.61328125
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "delta-rule-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.11149844605509955,
+            "referenceLoss": 0.11149844605509955
+          },
+          {
+            "step": 50,
+            "loss": 0.009639731976104259,
+            "referenceLoss": 0.00963973302511282
+          },
+          {
+            "step": 200,
+            "loss": 0.0010322475711047057,
+            "referenceLoss": 0.00103224743930376
+          },
+          {
+            "step": 1000,
+            "loss": 6.60841391316464e-8,
+            "referenceLoss": 6.608522795843456e-8
+          },
+          {
+            "step": 2000,
+            "loss": 9.282938610918386e-13,
+            "referenceLoss": 9.464165801464362e-13
+          }
+        ],
+        "maxWeightDifference": 3.0860535293886215e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "delta-rule-small",
+      "mode": "perf",
+      "load": {
+        "ms": 334.307992,
+        "rssMb": 81.74609375,
+        "heapMb": 45.44331359863281,
+        "externalMb": 32.948020935058594
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 87422.30612244898,
+          "min": 85830.71428571429,
+          "max": 121323.83673469388,
+          "cv": 0.11706828744307139
+        },
+        "callsPerRepeat": 49,
+        "cpuNsPerSample": 188945.57823129251,
+        "cpuUtilization": 2.010019291843126,
+        "heapBytesPerCall": 112815.2,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -1.125,
+        "externalGrowthMb": 0.048732757568359375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 292.02734375
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "delta-rule-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.11149844605509955,
+            "referenceLoss": 0.11149844605509955
+          },
+          {
+            "step": 50,
+            "loss": 0.009639731976104259,
+            "referenceLoss": 0.00963973302511282
+          },
+          {
+            "step": 200,
+            "loss": 0.0010322475711047057,
+            "referenceLoss": 0.00103224743930376
+          },
+          {
+            "step": 1000,
+            "loss": 6.60841391316464e-8,
+            "referenceLoss": 6.608522795843456e-8
+          },
+          {
+            "step": 2000,
+            "loss": 9.282938610918386e-13,
+            "referenceLoss": 9.464165801464362e-13
+          }
+        ],
+        "maxWeightDifference": 3.0860535293886215e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "delta-rule-small",
+      "mode": "perf",
+      "load": {
+        "ms": 365.594098,
+        "rssMb": 154.34765625,
+        "heapMb": 46.316986083984375,
+        "externalMb": 10.170513153076172
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 274950.54545454547,
+          "min": 243549.9090909091,
+          "max": 292593.1818181818,
+          "cv": 0.055450537591742385
+        },
+        "callsPerRepeat": 11,
+        "cpuNsPerSample": 375030.30303030304,
+        "cpuUtilization": 1.3535012603769614,
+        "heapBytesPerCall": 165882,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -1.21875,
+        "externalGrowthMb": 0.07991790771484375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 363.44140625
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "delta-rule-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.11149844605509955,
+            "referenceLoss": 0.11149844605509955
+          },
+          {
+            "step": 50,
+            "loss": 0.009639732499149085,
+            "referenceLoss": 0.00963973302511282
+          },
+          {
+            "step": 200,
+            "loss": 0.001032247656703081,
+            "referenceLoss": 0.00103224743930376
+          },
+          {
+            "step": 1000,
+            "loss": 6.608018038197072e-8,
+            "referenceLoss": 6.608522795843456e-8
+          },
+          {
+            "step": 2000,
+            "loss": 9.394266706905506e-13,
+            "referenceLoss": 9.464165801464362e-13
+          }
+        ],
+        "maxWeightDifference": 2.826486272811124e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "delta-rule-small",
+      "mode": "perf",
+      "load": {
+        "ms": 368.375122,
+        "rssMb": 153.9609375,
+        "heapMb": 46.19097137451172,
+        "externalMb": 10.170269012451172
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 197867.63636363635,
+          "min": 180580.36363636365,
+          "max": 273501.63636363635,
+          "cv": 0.1494925297353902
+        },
+        "callsPerRepeat": 11,
+        "cpuNsPerSample": 379818.1818181818,
+        "cpuUtilization": 1.7226323666046812,
+        "heapBytesPerCall": 101441.2,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -0.578125,
+        "externalGrowthMb": 0.12540054321289062,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 359.16015625
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "delta-rule-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.11149844605509955,
+            "referenceLoss": 0.11149844605509955
+          },
+          {
+            "step": 50,
+            "loss": 0.009639732499149085,
+            "referenceLoss": 0.00963973302511282
+          },
+          {
+            "step": 200,
+            "loss": 0.001032247656703081,
+            "referenceLoss": 0.00103224743930376
+          },
+          {
+            "step": 1000,
+            "loss": 6.608018038197072e-8,
+            "referenceLoss": 6.608522795843456e-8
+          },
+          {
+            "step": 2000,
+            "loss": 9.394266706905506e-13,
+            "referenceLoss": 9.464165801464362e-13
+          }
+        ],
+        "maxWeightDifference": 2.826486272811124e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "delta-rule-large",
+      "mode": "perf",
+      "load": {
+        "ms": 6.217864,
+        "rssMb": 1.125,
+        "heapMb": 0.410308837890625,
+        "externalMb": 2.154043197631836
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 55506.089373163566,
+          "min": 55072.41307541626,
+          "max": 56042.982859941236,
+          "cv": 0.005629034352556641
+        },
+        "callsPerRepeat": 4084,
+        "cpuNsPerSample": 55652.30166503428,
+        "cpuUtilization": 1.0036129361154214,
+        "heapBytesPerCall": 0,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.625,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 75.9140625
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "delta-rule-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.04815818459086393,
+            "referenceLoss": 0.04815818459086393
+          },
+          {
+            "step": 50,
+            "loss": 0.017770638164529087,
+            "referenceLoss": 0.017770638169948637
+          },
+          {
+            "step": 200,
+            "loss": 0.015449306873128904,
+            "referenceLoss": 0.015449306861861979
+          },
+          {
+            "step": 1000,
+            "loss": 0.007960407458466762,
+            "referenceLoss": 0.007960407563853146
+          },
+          {
+            "step": 2000,
+            "loss": 0.005325009668868177,
+            "referenceLoss": 0.0053250093341384065
+          }
+        ],
+        "maxWeightDifference": 1.9567648895310596e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "delta-rule-large",
+      "mode": "perf",
+      "load": {
+        "ms": 300.598515,
+        "rssMb": 83.0859375,
+        "heapMb": 45.01347351074219,
+        "externalMb": 15.937318801879883
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 625886.1290322581,
+          "min": 587681.5161290322,
+          "max": 937892.5483870967,
+          "cv": 0.15885314186501465
+        },
+        "callsPerRepeat": 31,
+        "cpuNsPerSample": 810071.6845878136,
+        "cpuUtilization": 1.1836173677228512,
+        "heapBytesPerCall": 523547.12,
+        "gcCount": 15,
+        "gcPauseMsPer1MCalls": 24326.16127114142,
+        "gcCountPer1MCalls": 53763.44086021506,
+        "rssGrowthMb": 0.4296875,
+        "externalGrowthMb": -1.77728271484375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 274.90625
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "delta-rule-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.04815818459086393,
+            "referenceLoss": 0.04815818459086393
+          },
+          {
+            "step": 50,
+            "loss": 0.017770637930625513,
+            "referenceLoss": 0.017770638169948637
+          },
+          {
+            "step": 200,
+            "loss": 0.015449306776535138,
+            "referenceLoss": 0.015449306861861979
+          },
+          {
+            "step": 1000,
+            "loss": 0.007960407309202538,
+            "referenceLoss": 0.007960407563853146
+          },
+          {
+            "step": 2000,
+            "loss": 0.005325009454548082,
+            "referenceLoss": 0.0053250093341384065
+          }
+        ],
+        "maxWeightDifference": 1.5402836365738248e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "delta-rule-large",
+      "mode": "perf",
+      "load": {
+        "ms": 299.413725,
+        "rssMb": 78.07421875,
+        "heapMb": 44.87440490722656,
+        "externalMb": 15.874818801879883
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 534769.65,
+          "min": 513310.15,
+          "max": 685458.45,
+          "cv": 0.0883915705153073
+        },
+        "callsPerRepeat": 40,
+        "cpuNsPerSample": 680325,
+        "cpuUtilization": 1.2207707262811491,
+        "heapBytesPerCall": 451634.56,
+        "gcCount": 18,
+        "gcPauseMsPer1MCalls": 17009.669418136276,
+        "gcCountPer1MCalls": 50000,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": -0.06463623046875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 274.09375
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "delta-rule-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.04815818459086393,
+            "referenceLoss": 0.04815818459086393
+          },
+          {
+            "step": 50,
+            "loss": 0.017770637930625513,
+            "referenceLoss": 0.017770638169948637
+          },
+          {
+            "step": 200,
+            "loss": 0.015449306776535138,
+            "referenceLoss": 0.015449306861861979
+          },
+          {
+            "step": 1000,
+            "loss": 0.007960407309202538,
+            "referenceLoss": 0.007960407563853146
+          },
+          {
+            "step": 2000,
+            "loss": 0.005325009454548082,
+            "referenceLoss": 0.0053250093341384065
+          }
+        ],
+        "maxWeightDifference": 1.5402836365738248e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "delta-rule-large",
+      "mode": "perf",
+      "load": {
+        "ms": 341.312434,
+        "rssMb": 86.80078125,
+        "heapMb": 45.55796813964844,
+        "externalMb": 31.999595642089844
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 233454.70588235295,
+          "min": 223428.9705882353,
+          "max": 302694.73529411765,
+          "cv": 0.09293173575688007
+        },
+        "callsPerRepeat": 34,
+        "cpuNsPerSample": 346781.045751634,
+        "cpuUtilization": 1.4169175509143281,
+        "heapBytesPerCall": 163820.96,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -0.46875,
+        "externalGrowthMb": -0.010345458984375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 287.44140625
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "delta-rule-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.04815818459086393,
+            "referenceLoss": 0.04815818459086393
+          },
+          {
+            "step": 50,
+            "loss": 0.017770638675313557,
+            "referenceLoss": 0.017770638169948637
+          },
+          {
+            "step": 200,
+            "loss": 0.015449307311504052,
+            "referenceLoss": 0.015449306861861979
+          },
+          {
+            "step": 1000,
+            "loss": 0.007960407411842455,
+            "referenceLoss": 0.007960407563853146
+          },
+          {
+            "step": 2000,
+            "loss": 0.005325009264184319,
+            "referenceLoss": 0.0053250093341384065
+          }
+        ],
+        "maxWeightDifference": 1.9128126664200162e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "delta-rule-large",
+      "mode": "perf",
+      "load": {
+        "ms": 337.903523,
+        "rssMb": 88.22265625,
+        "heapMb": 45.44599151611328,
+        "externalMb": 32.062583923339844
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 183698.55813953487,
+          "min": 160317.09302325582,
+          "max": 221455.60465116278,
+          "cv": 0.09851013977424528
+        },
+        "callsPerRepeat": 43,
+        "cpuNsPerSample": 254583.97932816538,
+        "cpuUtilization": 1.3539485015839674,
+        "heapBytesPerCall": 112917.2,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 9.59765625,
+        "externalGrowthMb": 0.2504920959472656,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 234.48828125
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "delta-rule-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.04815818459086393,
+            "referenceLoss": 0.04815818459086393
+          },
+          {
+            "step": 50,
+            "loss": 0.017770638675313557,
+            "referenceLoss": 0.017770638169948637
+          },
+          {
+            "step": 200,
+            "loss": 0.015449307311504052,
+            "referenceLoss": 0.015449306861861979
+          },
+          {
+            "step": 1000,
+            "loss": 0.007960407411842455,
+            "referenceLoss": 0.007960407563853146
+          },
+          {
+            "step": 2000,
+            "loss": 0.005325009264184319,
+            "referenceLoss": 0.0053250093341384065
+          }
+        ],
+        "maxWeightDifference": 1.9128126664200162e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "delta-rule-large",
+      "mode": "perf",
+      "load": {
+        "ms": 378.696064,
+        "rssMb": 166.10546875,
+        "heapMb": 46.36833190917969,
+        "externalMb": 11.114763259887695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 362025.8,
+          "min": 341434.6,
+          "max": 492748,
+          "cv": 0.12146004933336961
+        },
+        "callsPerRepeat": 10,
+        "cpuNsPerSample": 617233.3333333334,
+        "cpuUtilization": 1.5913059141316421,
+        "heapBytesPerCall": 166125.84,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": -1.1640625,
+        "externalGrowthMb": 0.07322311401367188,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 335.30078125
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "delta-rule-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.04815818459086393,
+            "referenceLoss": 0.04815818459086393
+          },
+          {
+            "step": 50,
+            "loss": 0.01777063842320582,
+            "referenceLoss": 0.017770638169948637
+          },
+          {
+            "step": 200,
+            "loss": 0.015449307068991572,
+            "referenceLoss": 0.015449306861861979
+          },
+          {
+            "step": 1000,
+            "loss": 0.007960407601116918,
+            "referenceLoss": 0.007960407563853146
+          },
+          {
+            "step": 2000,
+            "loss": 0.005325009726337415,
+            "referenceLoss": 0.0053250093341384065
+          }
+        ],
+        "maxWeightDifference": 1.3627839853119772e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "delta-rule-large",
+      "mode": "perf",
+      "load": {
+        "ms": 368.138224,
+        "rssMb": 154.59375,
+        "heapMb": 46.15679168701172,
+        "externalMb": 11.052263259887695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 302381.0909090909,
+          "min": 213352.72727272726,
+          "max": 355267,
+          "cv": 0.19110181220881453
+        },
+        "callsPerRepeat": 11,
+        "cpuNsPerSample": 529707.0707070708,
+        "cpuUtilization": 1.8319293467249333,
+        "heapBytesPerCall": 101428.96,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.11328125,
+        "externalGrowthMb": -0.1136932373046875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 289.95703125
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "delta-rule-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "checkpoints": [
+          {
+            "step": 0,
+            "loss": 0.04815818459086393,
+            "referenceLoss": 0.04815818459086393
+          },
+          {
+            "step": 50,
+            "loss": 0.01777063842320582,
+            "referenceLoss": 0.017770638169948637
+          },
+          {
+            "step": 200,
+            "loss": 0.015449307068991572,
+            "referenceLoss": 0.015449306861861979
+          },
+          {
+            "step": 1000,
+            "loss": 0.007960407601116918,
+            "referenceLoss": 0.007960407563853146
+          },
+          {
+            "step": 2000,
+            "loss": 0.005325009726337415,
+            "referenceLoss": 0.0053250093341384065
+          }
+        ],
+        "maxWeightDifference": 1.3627839853119772e-8,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "rnn-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 5.7999,
+        "rssMb": 1.375,
+        "heapMb": 0.42130279541015625,
+        "externalMb": 2.0250606536865234
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 843.0728948682985,
+          "min": 839.3713699388408,
+          "max": 847.7091462015148,
+          "cv": 0.0030928180625793356
+        },
+        "callsPerRepeat": 296276,
+        "cpuNsPerSample": 844.0226905543029,
+        "cpuUtilization": 0.9999066951371322,
+        "heapBytesPerCall": 0,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.25,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 72.94140625
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "rnn-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.1681026124144012e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "rnn-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 318.505968,
+        "rssMb": 95.66796875,
+        "heapMb": 45.66029357910156,
+        "externalMb": 16.074369430541992
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 43392.13831089351,
+          "min": 41824.93757649939,
+          "max": 61485.99510403917,
+          "cv": 0.12911995100007187
+        },
+        "callsPerRepeat": 1634,
+        "cpuNsPerSample": 59154.49476404189,
+        "cpuUtilization": 1.2954597552161449,
+        "heapBytesPerCall": 172412.16,
+        "gcCount": 56,
+        "gcPauseMsPer1MCalls": 1071.7078733327485,
+        "gcCountPer1MCalls": 3807.96953624371,
+        "rssGrowthMb": 1.125,
+        "externalGrowthMb": 0.12744140625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 211.453125
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "rnn-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.3817726640663608e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "rnn-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 298.499558,
+        "rssMb": 76.78515625,
+        "heapMb": 44.892906188964844,
+        "externalMb": 15.996673583984375
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 13070.122229684352,
+          "min": 12566.241884933961,
+          "max": 14352.222184911574,
+          "cv": 0.03489388242365774
+        },
+        "callsPerRepeat": 8934,
+        "cpuNsPerSample": 13526.677113648235,
+        "cpuUtilization": 1.0249621075355846,
+        "heapBytesPerCall": 74945.68,
+        "gcCount": 86,
+        "gcPauseMsPer1MCalls": 157.47144514745264,
+        "gcCountPer1MCalls": 1069.5719224933464,
+        "rssGrowthMb": 1,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 197.140625
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "rnn-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.3817726640663608e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "rnn-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 337.591401,
+        "rssMb": 91.50390625,
+        "heapMb": 46.04419708251953,
+        "externalMb": 33.035125732421875
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 46116.34079348932,
+          "min": 45505.18362156663,
+          "max": 57349.07273652085,
+          "cv": 0.07408434467524519
+        },
+        "callsPerRepeat": 1966,
+        "cpuNsPerSample": 60220.639764892054,
+        "cpuUtilization": 1.2523720878354874,
+        "heapBytesPerCall": 126741.92,
+        "gcCount": 63,
+        "gcPauseMsPer1MCalls": 962.2534199482952,
+        "gcCountPer1MCalls": 3560.528992878942,
+        "rssGrowthMb": 2.625,
+        "externalGrowthMb": 0.0250091552734375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 218.6796875
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "rnn-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.50519620884171e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "rnn-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 331.118124,
+        "rssMb": 89.81640625,
+        "heapMb": 45.42664337158203,
+        "externalMb": 32.94990158081055
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 18176.001439602147,
+          "min": 18039.9637482005,
+          "max": 18666.394581861012,
+          "cv": 0.012102227289027385
+        },
+        "callsPerRepeat": 7641,
+        "cpuNsPerSample": 19552.080152394246,
+        "cpuUtilization": 1.0629653463179547,
+        "heapBytesPerCall": 36487.6,
+        "gcCount": 37,
+        "gcPauseMsPer1MCalls": 158.2790650808164,
+        "gcCountPer1MCalls": 538.033125390801,
+        "rssGrowthMb": 0,
+        "externalGrowthMb": 0.11980438232421875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 270.44140625
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "rnn-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.50519620884171e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "rnn-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 410.827073,
+        "rssMb": 196.88671875,
+        "heapMb": 46.83733367919922,
+        "externalMb": 12.182085037231445
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 204102.8081841432,
+          "min": 195176.179028133,
+          "max": 225727.4219948849,
+          "cv": 0.03849687785900916
+        },
+        "callsPerRepeat": 782,
+        "cpuNsPerSample": 226274.08354646206,
+        "cpuUtilization": 1.0990386388944098,
+        "heapBytesPerCall": 157504.8,
+        "gcCount": 31,
+        "gcPauseMsPer1MCalls": 1611.7347285265814,
+        "gcCountPer1MCalls": 4404.6604148905935,
+        "rssGrowthMb": 1.5,
+        "externalGrowthMb": 0.12641525268554688,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 302.97265625
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "rnn-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.783857397410273e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "rnn-forward-small",
+      "mode": "perf",
+      "load": {
+        "ms": 363.630731,
+        "rssMb": 159.93359375,
+        "heapMb": 46.15937042236328,
+        "externalMb": 11.173845291137695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 60697.52173913043,
+          "min": 59186.391304347824,
+          "max": 68532.21739130435,
+          "cv": 0.043904323854182185
+        },
+        "callsPerRepeat": 23,
+        "cpuNsPerSample": 63714.97584541063,
+        "cpuUtilization": 1.010936339830976,
+        "heapBytesPerCall": 28367.12,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0,
+        "externalGrowthMb": 0.1152801513671875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 275.51953125
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "rnn-forward-small",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 3.783857397410273e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "rnn-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 7.26252,
+        "rssMb": 0.828125,
+        "heapMb": 0.42266845703125,
+        "externalMb": 2.227376937866211
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 28782.97250782298,
+          "min": 28754.011622708986,
+          "max": 28964.779727313366,
+          "cv": 0.002245627798468187
+        },
+        "callsPerRepeat": 8948,
+        "cpuNsPerSample": 28828.204937167833,
+        "cpuUtilization": 1.000329426329363,
+        "heapBytesPerCall": 0,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": 0.12506103515625,
+        "tensorGrowth": null
+      },
+      "peakRssMb": 72.515625
+    },
+    {
+      "impl": "neuro-learn",
+      "scenario": "rnn-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 1.872553863080384e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "rnn-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 1134.046937,
+        "rssMb": 129.33984375,
+        "heapMb": 45.839134216308594,
+        "externalMb": 19.22234344482422
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 105749.43589743589,
+          "min": 101419.73333333334,
+          "max": 187071.53846153847,
+          "cv": 0.22267940414174073
+        },
+        "callsPerRepeat": 195,
+        "cpuNsPerSample": 159627.35042735044,
+        "cpuUtilization": 1.358694235408479,
+        "heapBytesPerCall": 266721.12,
+        "gcCount": 9,
+        "gcPauseMsPer1MCalls": 1665.3418753221845,
+        "gcCountPer1MCalls": 5128.205128205128,
+        "rssGrowthMb": 0.875,
+        "externalGrowthMb": -0.67572021484375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 204.015625
+    },
+    {
+      "impl": "tfjs-cpu-layers",
+      "scenario": "rnn-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 2.433291244052782e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "rnn-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 295.717175,
+        "rssMb": 76.75,
+        "heapMb": 44.884544372558594,
+        "externalMb": 16.197084426879883
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 61015.375776397515,
+          "min": 58964.82298136646,
+          "max": 92316.21118012423,
+          "cv": 0.15669386943572053
+        },
+        "callsPerRepeat": 322,
+        "cpuNsPerSample": 76912.69841269842,
+        "cpuUtilization": 1.19091030031432,
+        "heapBytesPerCall": 149073.92,
+        "gcCount": 3,
+        "gcPauseMsPer1MCalls": 545.6587316415653,
+        "gcCountPer1MCalls": 1035.1966873706006,
+        "rssGrowthMb": 0.25,
+        "externalGrowthMb": 1.46392822265625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 197.97265625
+    },
+    {
+      "impl": "tfjs-cpu-ops",
+      "scenario": "rnn-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 2.433291244052782e-7,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "rnn-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 405.649012,
+        "rssMb": 148.66796875,
+        "heapMb": 46.23517608642578,
+        "externalMb": 42.87329864501953
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 50484.07526881721,
+          "min": 48926.75806451613,
+          "max": 55314.09370199693,
+          "cv": 0.036950096950898674
+        },
+        "callsPerRepeat": 2604,
+        "cpuNsPerSample": 58281.191329578425,
+        "cpuUtilization": 1.1322085905818473,
+        "heapBytesPerCall": 126578.96,
+        "gcCount": 85,
+        "gcPauseMsPer1MCalls": 934.6334268451042,
+        "gcCountPer1MCalls": 3626.8987881891107,
+        "rssGrowthMb": 4.14453125,
+        "externalGrowthMb": -0.036205291748046875,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 253.421875
+    },
+    {
+      "impl": "tfjs-wasm-layers",
+      "scenario": "rnn-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 0.000001265469356859228,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "rnn-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 334.659333,
+        "rssMb": 93.8671875,
+        "heapMb": 45.441558837890625,
+        "externalMb": 32.2232551574707
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 21965.01007677543,
+          "min": 21387.491042866284,
+          "max": 22240.29318618042,
+          "cv": 0.011181578139408297
+        },
+        "callsPerRepeat": 6252,
+        "cpuNsPerSample": 23234.92926707898,
+        "cpuUtilization": 1.0556315918309023,
+        "heapBytesPerCall": 36507.2,
+        "gcCount": 63,
+        "gcPauseMsPer1MCalls": 209.69616771040927,
+        "gcCountPer1MCalls": 1119.6417146513118,
+        "rssGrowthMb": -0.109375,
+        "externalGrowthMb": -0.03096771240234375,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 208.44140625
+    },
+    {
+      "impl": "tfjs-wasm-ops",
+      "scenario": "rnn-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 0.000001265469356859228,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "rnn-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 492.801658,
+        "rssMb": 230.08984375,
+        "heapMb": 46.878929138183594,
+        "externalMb": 12.346050262451172
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 234934.6661911555,
+          "min": 219277.01569186876,
+          "max": 255948.37375178316,
+          "cv": 0.04967321398988814
+        },
+        "callsPerRepeat": 701,
+        "cpuNsPerSample": 298610.3978443493,
+        "cpuUtilization": 1.2817083540851835,
+        "heapBytesPerCall": 157726.16,
+        "gcCount": 28,
+        "gcPauseMsPer1MCalls": 1373.4002223122911,
+        "gcCountPer1MCalls": 4438.104295450943,
+        "rssGrowthMb": 1.75,
+        "externalGrowthMb": 0.050811767578125,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 312.79296875
+    },
+    {
+      "impl": "tfjs-node-layers",
+      "scenario": "rnn-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 0.000001265469356859228,
+        "finite": true
+      }
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "rnn-forward-large",
+      "mode": "perf",
+      "load": {
+        "ms": 365.68193,
+        "rssMb": 159.15234375,
+        "heapMb": 46.166648864746094,
+        "externalMb": 11.374528884887695
+      },
+      "perf": {
+        "nsPerSample": {
+          "median": 73411.40909090909,
+          "min": 71733.81818181818,
+          "max": 86825.54545454546,
+          "cv": 0.05871616843240362
+        },
+        "callsPerRepeat": 22,
+        "cpuNsPerSample": 103676.76767676767,
+        "cpuUtilization": 1.357908873254474,
+        "heapBytesPerCall": 28367.12,
+        "gcCount": 0,
+        "gcPauseMsPer1MCalls": 0,
+        "gcCountPer1MCalls": 0,
+        "rssGrowthMb": 0.125,
+        "externalGrowthMb": 0.092041015625,
+        "tensorGrowth": 0
+      },
+      "peakRssMb": 274.72265625
+    },
+    {
+      "impl": "tfjs-node-ops",
+      "scenario": "rnn-forward-large",
+      "mode": "accuracy",
+      "accuracy": {
+        "maxAbsError": 0.000001265469356859228,
+        "finite": true
+      }
+    }
+  ]
+}
