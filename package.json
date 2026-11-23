@@ -1,9 +1,24 @@
 {
   "name": "@oxyrlab/neuro-learn",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Small, deterministic, allocation-free learning algorithms and neural networks on Float32Array.",
+  "keywords": [
+    "neural-network",
+    "reinforcement",
+    "hebbian",
+    "rescorla-wagner",
+    "eligibility-trace",
+    "float32array",
+    "deterministic",
+    "simulation"
+  ],
+  "homepage": "https://github.com/oxyrlab/neuro-learn#readme",
+  "bugs": {
+    "url": "https://github.com/oxyrlab/neuro-learn/issues"
+  },
   "license": "MIT",
   "type": "module",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oxyrlab/neuro-learn.git"
@@ -38,7 +53,8 @@
     "format": "prettier --write .",
     "docs:check": "tsx scripts/check-docs.ts",
     "bench": "node --import tsx scripts/benchmark.ts",
-    "check:allocation": "node --expose-gc --import tsx scripts/check-allocation.ts"
+    "check:allocation": "node --expose-gc --import tsx scripts/check-allocation.ts",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "vitest": ">=3"
