@@ -18,4 +18,5 @@ no runtime dependencies. Consumed by EcoSim through the `Learner` interface.
 - [STATUS.md](STATUS.md) — current state
 - [CHANGELOG.md](CHANGELOG.md) — notable changes
 - [glossary.md](glossary.md) — definitions
+- `concepts/` — one doc per component ([learner](concepts/learner.md), [rescorla-wagner](concepts/rescorla-wagner.md), [eligibility-trace](concepts/eligibility-trace.md), [hebbian](concepts/hebbian.md))
 - `adr/` — architecture decisions; `templates/` — doc templates
