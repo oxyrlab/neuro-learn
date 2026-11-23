@@ -12,8 +12,11 @@
 - Phase 2: activations, `Network`, `FeedforwardNetwork`, `Backpropagator`, `MlpSgdLearner`, `RecurrentNetwork`.
 - Phase 3: scenario tests (fear conditioning, extinction, generalization, reward/pain, long runs, function fitting, recurrent evolution), model-based fuzzing, allocation check, benchmarks, code-review fixes, ADR 0007.
 
+- Benchmark against TensorFlow.js (`benchmarks/tfjs-comparison`): speed, resources and accuracy on identical data; results recorded in `docs/performance.md`.
+
 ## Open issues / debt
 
+- The TensorFlow.js benchmark needs `@tensorflow/tfjs-node` 4.22, which does not load on Node 23+ without a small shim (`lib/subjects/tf-load.ts`). It is not part of CI.
 - `check:allocation` runs in CI on Node 24 only; thresholds were verified on Node 24 and may need tuning on other versions.
 - Features of `predict` are not range-checked: extreme finite inputs (near 3e38) can produce infinite outputs (state stays safe).
 
