@@ -27,6 +27,10 @@ tests: [src/nn/recurrent-network.test.ts]
 
 One `forward` = one time step: `h' = f(Wxh·x + Whh·h + bh)`, `out = g(Why·h' + by)`. `reset()` zeroes `h`. With `tanh`, `|h| <= 1` always.
 
+## Errors
+
+`forward` throws `NumericInstabilityError` if the hidden state or output would become non-finite (unbounded activations such as `relu`/`linear` can overflow over many steps). The network is left unchanged (the hidden state keeps its last finite value), so you can `reset()` and continue. Prefer `tanh` for the hidden state.
+
 ## Gotchas
 
 Call `reset()` between independent episodes. `restore` also restores the hidden state, so a sequence continues exactly.
