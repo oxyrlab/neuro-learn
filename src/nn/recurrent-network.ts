@@ -1,5 +1,12 @@
+import { NumericInstabilityError } from '../core/errors';
 import type { Rng } from '../core/rng';
-import { assertFiniteBuffer, assertPositiveInteger, assertSize } from '../core/validation';
+import {
+  assertFiniteBuffer,
+  assertPositiveInteger,
+  assertSize,
+  createFloat32Array,
+  isFiniteBuffer,
+} from '../core/validation';
 import type { ActivationId } from './activations';
 import { getActivation } from './activations';
 import type { Network } from './network';
@@ -40,10 +47,15 @@ export interface RecurrentNetworkOptions {
  * network.reset();             // forget the history
  */
 export class RecurrentNetwork implements Network {
+  /** Number of inputs. */
   public readonly inputSize: number;
+  /** Number of hidden units (size of the recurrent state). */
   public readonly hiddenSize: number;
+  /** Number of outputs. */
   public readonly outputSize: number;
+  /** Length of the serialized state: weights followed by the hidden state. */
   public readonly stateSize: number;
+  /** Live view of the weights (layout in the class docs); writing changes the network. */
   public readonly weights: Float32Array;
   private readonly state: Float32Array;
   private readonly hidden: Float32Array;
@@ -82,7 +94,7 @@ export class RecurrentNetwork implements Network {
     this.outputBiasStart = this.hiddenToOutputStart + outputSize * hiddenSize;
     const weightCount = this.outputBiasStart + outputSize;
     this.stateSize = weightCount + hiddenSize;
-    this.state = new Float32Array(this.stateSize);
+    this.state = createFloat32Array('recurrent state size', this.stateSize);
     this.weights = this.state.subarray(0, weightCount);
     this.hidden = this.state.subarray(weightCount);
     this.nextHidden = new Float32Array(hiddenSize);
@@ -131,16 +143,28 @@ export class RecurrentNetwork implements Network {
       this.nextHidden[unit] = sum;
     }
     this.hiddenActivation.applyInPlace(this.nextHidden);
-    this.hidden.set(this.nextHidden);
+    if (!isFiniteBuffer(this.nextHidden)) {
+      throw new NumericInstabilityError(
+        'RecurrentNetwork.forward',
+        'the hidden state became non-finite; use a bounded hiddenActivation such as "tanh" or smaller weights, then call reset()',
+      );
+    }
     for (let row = 0; row < this.outputSize; row += 1) {
       let sum = this.weights[this.outputBiasStart + row] as number;
       const base = this.hiddenToOutputStart + row * this.hiddenSize;
       for (let column = 0; column < this.hiddenSize; column += 1) {
-        sum += (this.weights[base + column] as number) * (this.hidden[column] as number);
+        sum += (this.weights[base + column] as number) * (this.nextHidden[column] as number);
       }
       out[row] = sum;
     }
     this.outputActivation.applyInPlace(out);
+    if (!isFiniteBuffer(out)) {
+      throw new NumericInstabilityError(
+        'RecurrentNetwork.forward',
+        'the output became non-finite; use a bounded outputActivation or smaller weights',
+      );
+    }
+    this.hidden.set(this.nextHidden);
   }
 
   /** @inheritdoc */
