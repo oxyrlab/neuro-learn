@@ -26,16 +26,6 @@ export function multiplyMatrixVector(
 }
 
 /**
- * Clamps `value` to `[-limit, limit]`.
- *
- * @param value - Value to clamp.
- * @param limit - Non-negative magnitude bound.
- */
-export function clampMagnitude(value: number, limit: number): number {
-  return value > limit ? limit : value < -limit ? -limit : value;
-}
-
-/**
  * Multiplies every element of `buffer` by `factor`, in place.
  *
  * @param buffer - Buffer to scale.
@@ -44,6 +34,20 @@ export function clampMagnitude(value: number, limit: number): number {
 export function scaleInPlace(buffer: Float32Array, factor: number): void {
   for (let index = 0; index < buffer.length; index += 1) {
     buffer[index] = (buffer[index] as number) * factor;
+  }
+}
+
+/**
+ * Clamps every element of `buffer` to `[-limit, limit]`, in place.
+ *
+ * @param buffer - Buffer to clamp.
+ * @param limit - Non-negative magnitude bound.
+ */
+export function clampInPlace(buffer: Float32Array, limit: number): void {
+  for (let index = 0; index < buffer.length; index += 1) {
+    const value = buffer[index] as number;
+    if (value > limit) buffer[index] = limit;
+    else if (value < -limit) buffer[index] = -limit;
   }
 }
 
@@ -79,7 +83,11 @@ export function applyDeltaRule(
     const step = rate * ((targets[row] as number) - predicted);
     for (let column = 0; column < columnCount; column += 1) {
       const next = (weights[base + column] as number) + step * (inputs[column] as number);
-      weights[base + column] = clampMagnitude(next, limit);
+      // Store inside each branch: merging `limit` and `next` into one variable makes V8 box a
+      // number per weight when `limit` is an integer (see docs/performance.md).
+      if (next > limit) weights[base + column] = limit;
+      else if (next < -limit) weights[base + column] = -limit;
+      else weights[base + column] = next;
     }
   }
 }
