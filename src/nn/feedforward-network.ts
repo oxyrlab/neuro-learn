@@ -125,8 +125,9 @@ export class FeedforwardNetwork implements Network {
         for (let column = 0; column < fanIn; column += 1) {
           sum += (this.weights[base + column] as number) * (previous[column] as number);
         }
-        next[row] = activation.apply(sum);
+        next[row] = sum;
       }
+      activation.applyInPlace(next);
     }
     out.set(this.layerOutputs[layerCount] as Float32Array);
   }
