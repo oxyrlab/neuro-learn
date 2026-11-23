@@ -7,7 +7,7 @@ import {
   assertSize,
 } from '../core/validation';
 import type { Learner } from './learner';
-import { clampMagnitude, multiplyMatrixVector, scaleInPlace } from './linear-math';
+import { multiplyMatrixVector, scaleInPlace } from './linear-math';
 
 /** Default maximum absolute weight. */
 const DEFAULT_MAX_WEIGHT = 1;
@@ -92,7 +92,9 @@ export class HebbianLearner implements Learner {
         const weight = this.weights[base + column] as number;
         const pre = features[column] as number;
         const next = weight + rate * (post * pre - this.weightDecay * weight);
-        this.weights[base + column] = clampMagnitude(next, this.maxWeight);
+        if (next > this.maxWeight) this.weights[base + column] = this.maxWeight;
+        else if (next < -this.maxWeight) this.weights[base + column] = -this.maxWeight;
+        else this.weights[base + column] = next;
       }
     }
   }
