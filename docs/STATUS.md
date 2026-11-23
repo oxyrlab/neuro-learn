@@ -1,12 +1,13 @@
 # Status
 
-- **Current phase:** 1 — core and linear learners (complete, awaiting review).
-- **Next task:** Phase 2 — `mlp-sgd` (with numerical gradient check), then feedforward and recurrent networks on `Float32Array`, serialization and determinism tests.
+- **Current phase:** 2 — networks and `mlp-sgd` (complete, awaiting review).
+- **Next task:** Phase 3 — realistic scenario tests (conditioning, extinction, generalization, XOR/regression), property tests, allocation benchmark, debugging, release `0.1.0`.
 
 ## Done
 
 - Phase 0: tooling, `src/core` (Rng, errors), docs skeleton, ADRs 0001–0004.
 - Phase 1: `core/validation`, `Learner` interface, `linear-math`, `runLearnerContract` (`/testing` entry), `rescorla-wagner`, `eligibility-trace`, `hebbian`; concept docs; ADR 0005.
+- Phase 2: `nn/activations`, `Network`, `FeedforwardNetwork`, `Backpropagator` (numerical gradient check), `MlpSgdLearner`, `RecurrentNetwork`; contract option `initialState`; ADR 0006.
 
 ## Open issues / debt
 
