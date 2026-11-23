@@ -87,6 +87,22 @@ describe('EligibilityTraceLearner', () => {
     expect(() => learner.observe(new Float32Array(4).fill(NaN))).toThrow(InvalidParameterError);
   });
 
+  it('rejects negative cue strengths instead of silently ignoring them', () => {
+    const learner = new EligibilityTraceLearner(base);
+    expect(() => learner.observe(Float32Array.of(0, -0.1, 0, 0))).toThrow(/features\[1\]/);
+    expect(() => learner.learn(Float32Array.of(0, -0.1, 0, 0), Float32Array.of(1), 0.5)).toThrow(
+      InvalidParameterError,
+    );
+  });
+
+  it('a rejected learn leaves the state untouched', () => {
+    const learner = new EligibilityTraceLearner(base);
+    learner.observe(Float32Array.of(1, 0, 0, 0));
+    const before = Array.from(learner.serialize());
+    expect(() => learner.learn(Float32Array.of(0, -1, 0, 0), Float32Array.of(1), 0.5)).toThrow();
+    expect(Array.from(learner.serialize())).toEqual(before);
+  });
+
   it.each([
     ['inputSize', { ...base, inputSize: 0 }],
     ['outputSize', { ...base, outputSize: 0 }],
