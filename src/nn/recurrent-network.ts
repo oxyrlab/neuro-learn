@@ -128,8 +128,9 @@ export class RecurrentNetwork implements Network {
       for (let column = 0; column < this.hiddenSize; column += 1) {
         sum += (this.weights[recurrentBase + column] as number) * (this.hidden[column] as number);
       }
-      this.nextHidden[unit] = this.hiddenActivation.apply(sum);
+      this.nextHidden[unit] = sum;
     }
+    this.hiddenActivation.applyInPlace(this.nextHidden);
     this.hidden.set(this.nextHidden);
     for (let row = 0; row < this.outputSize; row += 1) {
       let sum = this.weights[this.outputBiasStart + row] as number;
@@ -137,8 +138,9 @@ export class RecurrentNetwork implements Network {
       for (let column = 0; column < this.hiddenSize; column += 1) {
         sum += (this.weights[base + column] as number) * (this.hidden[column] as number);
       }
-      out[row] = this.outputActivation.apply(sum);
+      out[row] = sum;
     }
+    this.outputActivation.applyInPlace(out);
   }
 
   /** @inheritdoc */
