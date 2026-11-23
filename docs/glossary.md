@@ -12,3 +12,6 @@
 | Decay (forgetting) | Movement of state toward zero over time, `decay(dt)`.                                                        |
 | Rng                | Injected source of randomness (`next()` in [0, 1)); never `Math.random`.                                     |
 | Hot loop           | Code called every tick; must not allocate.                                                                   |
+| Cue                | One input feature that may predict an outcome (Rescorla–Wagner term).                                        |
+| Blocking           | A cue already predicting an outcome prevents learning about a cue added later.                               |
+| Contract suite     | Shared Vitest suite (`runLearnerContract`) every learner must pass.                                          |
