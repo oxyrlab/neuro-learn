@@ -1,6 +1,11 @@
 import { InvalidParameterError } from '../core/errors';
 import type { Rng } from '../core/rng';
-import { assertFiniteBuffer, assertPositiveInteger, assertSize } from '../core/validation';
+import {
+  assertFiniteBuffer,
+  assertPositiveInteger,
+  assertSize,
+  createFloat32Array,
+} from '../core/validation';
 import type { Activation, ActivationId } from './activations';
 import { getActivation } from './activations';
 import type { Network } from './network';
@@ -37,9 +42,13 @@ export interface FeedforwardNetworkOptions {
  * network.forward(Float32Array.of(0.5, -0.5), out);
  */
 export class FeedforwardNetwork implements Network {
+  /** Number of inputs (`layerSizes[0]`). */
   public readonly inputSize: number;
+  /** Number of outputs (last entry of `layerSizes`). */
   public readonly outputSize: number;
+  /** Length of the serialized state, equal to `weights.length`. */
   public readonly stateSize: number;
+  /** Live view of all weights and biases (layout in the class docs); writing changes the network. */
   public readonly weights: Float32Array;
   /** Sizes of all layers including input and output. */
   public readonly layerSizes: readonly number[];
@@ -87,11 +96,11 @@ export class FeedforwardNetwork implements Network {
     this.layerActivations = this.layerSizes
       .slice(1)
       .map((_, layer) => (layer === layerCount - 1 ? output : hidden));
-    this.layerOutputs = this.layerSizes.map((size) => new Float32Array(size));
     this.inputSize = sizes[0] as number;
     this.outputSize = sizes[layerCount] as number;
     this.stateSize = total;
-    this.weights = new Float32Array(total);
+    this.weights = createFloat32Array('number of weights', total);
+    this.layerOutputs = this.layerSizes.map((size) => new Float32Array(size));
     const randomizedLayers = options.zeroOutputLayer === true ? layerCount - 1 : layerCount;
     for (let layer = 0; layer < randomizedLayers; layer += 1) {
       const fanIn = sizes[layer] as number;
