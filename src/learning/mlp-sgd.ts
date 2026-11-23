@@ -10,7 +10,7 @@ import { Backpropagator } from '../nn/backprop';
 import type { ActivationId } from '../nn/activations';
 import { FeedforwardNetwork } from '../nn/feedforward-network';
 import type { Learner } from './learner';
-import { clampMagnitude, scaleInPlace } from './linear-math';
+import { clampInPlace, scaleInPlace } from './linear-math';
 
 /** Default maximum absolute weight. */
 const DEFAULT_MAX_WEIGHT = 5;
@@ -68,12 +68,7 @@ export class MlpSgdLearner implements Learner {
     assertPositive('maxWeight', this.maxWeight);
     assertNonNegative('forgetRatePerSecond', this.forgetRatePerSecond);
     this.network = new FeedforwardNetwork({ ...options, zeroOutputLayer: true });
-    for (let index = 0; index < this.network.weights.length; index += 1) {
-      this.network.weights[index] = clampMagnitude(
-        this.network.weights[index] as number,
-        this.maxWeight,
-      );
-    }
+    clampInPlace(this.network.weights, this.maxWeight);
     this.backprop = new Backpropagator(this.network);
     this.inputSize = this.network.inputSize;
     this.outputSize = this.network.outputSize;
@@ -97,7 +92,9 @@ export class MlpSgdLearner implements Learner {
     const weights = this.network.weights;
     for (let index = 0; index < weights.length; index += 1) {
       const next = (weights[index] as number) - rate * (this.gradient[index] as number);
-      weights[index] = clampMagnitude(next, this.maxWeight);
+      if (next > this.maxWeight) weights[index] = this.maxWeight;
+      else if (next < -this.maxWeight) weights[index] = -this.maxWeight;
+      else weights[index] = next;
     }
   }
 
