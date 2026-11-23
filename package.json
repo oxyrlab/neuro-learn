@@ -19,6 +19,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./testing": {
+      "types": "./dist/testing.d.ts",
+      "import": "./dist/testing.js",
+      "require": "./dist/testing.cjs"
     }
   },
   "engines": {
@@ -32,6 +37,14 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "docs:check": "tsx scripts/check-docs.ts"
+  },
+  "peerDependencies": {
+    "vitest": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "vitest": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
