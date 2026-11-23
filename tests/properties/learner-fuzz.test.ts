@@ -83,6 +83,17 @@ const learners: Array<[string, () => Learner & { observe?: (f: Float32Array) => 
       }),
   ],
   [
+    'mlp-sgd (relu)',
+    () =>
+      new MlpSgdLearner({
+        layerSizes: [INPUT_SIZE, 4, OUTPUT_SIZE],
+        rng: createSeededRng(2),
+        hiddenActivation: 'relu',
+        maxWeight: BOUND,
+        forgetRatePerSecond: 0.1,
+      }),
+  ],
+  [
     'mlp-sgd',
     () =>
       new MlpSgdLearner({
