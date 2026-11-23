@@ -1,18 +1,17 @@
 # Status
 
-- **Current phase:** 0 — scaffolding (complete, awaiting review).
-- **Next task:** Phase 1 — `Learner` interface, `runLearnerContract`, then `rescorla-wagner`, `eligibility-trace`, `hebbian` (each with full tests).
+- **Current phase:** 1 — core and linear learners (complete, awaiting review).
+- **Next task:** Phase 2 — `mlp-sgd` (with numerical gradient check), then feedforward and recurrent networks on `Float32Array`, serialization and determinism tests.
 
 ## Done
 
-- Repository tooling: TS strict, ESLint, Prettier, Vitest + coverage thresholds, tsup, CI.
-- `src/core`: `Rng`, seeded RNG, error classes.
-- Docs skeleton and ADRs 0001–0004.
+- Phase 0: tooling, `src/core` (Rng, errors), docs skeleton, ADRs 0001–0004.
+- Phase 1: `core/validation`, `Learner` interface, `linear-math`, `runLearnerContract` (`/testing` entry), `rescorla-wagner`, `eligibility-trace`, `hebbian`; concept docs; ADR 0005.
 
 ## Open issues / debt
 
-- None yet.
+- "No allocation after construction" is only checked structurally; a measured benchmark is planned for phase 3.
 
 ## Open design questions
 
-- Exact `Learner` interface details (EcoSim spec section 5.3.1) to be confirmed in phase 1.
+- None for this package. (Neuromodulator semantics are an EcoSim decision.)
