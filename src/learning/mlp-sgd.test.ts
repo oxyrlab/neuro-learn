@@ -146,4 +146,50 @@ describe('MlpSgdLearner', () => {
       new RegExp(name),
     );
   });
+
+  it('stays finite when huge inputs overflow Float32 in the forward pass (relu)', () => {
+    const learner = new MlpSgdLearner({
+      layerSizes: [1, 3, 1],
+      rng: createSeededRng(1),
+      hiddenActivation: 'relu',
+    });
+    for (let i = 0; i < 10; i += 1) learner.learn(Float32Array.of(3e38), Float32Array.of(1), 0.5);
+    expect(learner.serialize().every((value) => Number.isFinite(value))).toBe(true);
+    expect(() => learner.restore(learner.serialize())).not.toThrow();
+  });
+
+  it('skips the update instead of corrupting weights, and still learns afterwards', () => {
+    const learner = new MlpSgdLearner({
+      layerSizes: [1, 3, 1],
+      rng: createSeededRng(1),
+      hiddenActivation: 'relu',
+    });
+    // The first call is still finite (the output layer starts at zero) and pushes the output
+    // weights to their bound; the second call then overflows in the forward pass and is skipped.
+    learner.learn(Float32Array.of(3e38), Float32Array.of(1), 0.5);
+    const before = Array.from(learner.serialize());
+    learner.learn(Float32Array.of(3e38), Float32Array.of(1), 0.5);
+    expect(Array.from(learner.serialize())).toEqual(before);
+    for (let i = 0; i < 200; i += 1) learner.learn(Float32Array.of(0.5), Float32Array.of(1), 0.1);
+    expect(predictOne(learner, [0.5])).toBeGreaterThan(0.5);
+  });
+
+  it('rejects restoring weights beyond maxWeight', () => {
+    const learner = new MlpSgdLearner({
+      layerSizes: [1, 1],
+      rng: createSeededRng(1),
+      maxWeight: 1,
+    });
+    expect(() => learner.restore(Float32Array.of(2, 0))).toThrow(InvalidParameterError);
+    expect(() => learner.restore(Float32Array.of(0))).toThrow(SizeMismatchError);
+  });
+
+  it('rejects a bound larger than the Float32 range and impossible sizes', () => {
+    expect(
+      () => new MlpSgdLearner({ layerSizes: [1, 1], rng: createSeededRng(1), maxWeight: 1e39 }),
+    ).toThrow(/maxWeight/);
+    expect(() => new MlpSgdLearner({ layerSizes: [1e10, 1], rng: createSeededRng(1) })).toThrow(
+      InvalidParameterError,
+    );
+  });
 });
