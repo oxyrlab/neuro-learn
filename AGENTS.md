@@ -16,13 +16,14 @@ Entry point for any AI assistant working on `@oxyrlab/neuro-learn`.
 - State lives in fixed-size `Float32Array`s; no allocation after construction.
 - No hard-coded numeric limits: expose them as constructor parameters with documented ranges.
 - Every component ships with complete unit tests next to it (`x.ts` + `x.test.ts`).
+- Hot paths (`predict`/`learn`/`decay`/`forward`) must stay allocation-free (`npm run check:allocation`): work on whole buffers, never return a fractional number from a per-element helper, and store clamped values inside each branch instead of merging them into one variable (see docs/performance.md).
 - Docs are updated in the same change: `docs/STATUS.md`, `docs/CHANGELOG.md`, ADR if architecture changes.
 - Commit each file separately with a Conventional Commit message. Never bundle many files in one commit.
 
 ## Definition of done
 
-`npm run typecheck`, `npm run lint`, `npm run test:coverage`, `npm run build`, `npm run docs:check` all green.
+`npm run typecheck`, `npm run lint`, `npm run test:coverage`, `npm run build`, `npm run docs:check` and `npm run check:allocation` all green.
 
 ## Phases
 
-0 scaffolding · 1 core + linear learners · 2 networks · 3 realistic tests, debugging, release.
+0 scaffolding · 1 core + linear learners · 2 networks · 3 realistic tests, debugging, release `0.1.0`.
