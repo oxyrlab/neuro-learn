@@ -23,3 +23,5 @@ jobs:
       - run: npm run test:coverage
       - run: npm run build
       - run: npm run docs:check
+      - run: npm run check:allocation
+        if: matrix.node-version == 24
