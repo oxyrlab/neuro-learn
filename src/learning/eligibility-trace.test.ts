@@ -112,4 +112,20 @@ describe('EligibilityTraceLearner', () => {
   ])('rejects invalid %s', (name, options) => {
     expect(() => new EligibilityTraceLearner(options)).toThrow(new RegExp(name));
   });
+
+  it('rejects restoring a negative trace or strengths beyond maxStrength', () => {
+    const learner = new EligibilityTraceLearner({ ...base, inputSize: 1 });
+    expect(() => learner.restore(Float32Array.of(0, -1))).toThrow(/state\.trace\[0\]/);
+    expect(() => learner.restore(Float32Array.of(100, 0))).toThrow(/state\[0\]/);
+    expect(() => learner.restore(Float32Array.of(0.5, 3))).not.toThrow(); // a trace may exceed maxStrength
+  });
+
+  it('rejects a bound larger than the Float32 range and impossible sizes', () => {
+    expect(() => new EligibilityTraceLearner({ ...base, maxStrength: 1e39 })).toThrow(
+      /maxStrength/,
+    );
+    expect(() => new EligibilityTraceLearner({ ...base, inputSize: 1e10 })).toThrow(
+      InvalidParameterError,
+    );
+  });
 });
