@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Benchmark against TensorFlow.js in `benchmarks/tfjs-comparison` (speed, resources, accuracy; separate package, not published); results summarized in `docs/performance.md`.
+
 ## 0.1.0
 
 - Learners: `RescorlaWagnerLearner`, `EligibilityTraceLearner`, `HebbianLearner`, `MlpSgdLearner`; shared `Learner` interface and `runLearnerContract` (`@oxyrlab/neuro-learn/testing`).
