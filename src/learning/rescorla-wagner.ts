@@ -1,10 +1,12 @@
 import {
+  assertBound,
   assertFiniteBuffer,
   assertFiniteInRange,
   assertNonNegative,
-  assertPositive,
   assertPositiveInteger,
   assertSize,
+  assertWithinMagnitude,
+  createFloat32Array,
 } from '../core/validation';
 import type { Learner } from './learner';
 import { applyDeltaRule, multiplyMatrixVector, scaleInPlace } from './linear-math';
@@ -37,8 +39,11 @@ export interface RescorlaWagnerOptions {
  * learner.learn(Float32Array.of(1, 0, 0, 0), Float32Array.of(1), 0.2); // cue 0 paired with outcome
  */
 export class RescorlaWagnerLearner implements Learner {
+  /** Number of cues (input features). */
   public readonly inputSize: number;
+  /** Number of outcomes (outputs). */
   public readonly outputSize: number;
+  /** Length of the serialized state: `outputSize * inputSize`. */
   public readonly stateSize: number;
   private readonly strengths: Float32Array;
   private readonly maxStrength: number;
@@ -53,12 +58,12 @@ export class RescorlaWagnerLearner implements Learner {
     assertPositiveInteger('outputSize', options.outputSize);
     this.maxStrength = options.maxStrength ?? DEFAULT_MAX_STRENGTH;
     this.forgetRatePerSecond = options.forgetRatePerSecond ?? DEFAULT_FORGET_RATE_PER_SECOND;
-    assertPositive('maxStrength', this.maxStrength);
+    assertBound('maxStrength', this.maxStrength);
     assertNonNegative('forgetRatePerSecond', this.forgetRatePerSecond);
     this.inputSize = options.inputSize;
     this.outputSize = options.outputSize;
     this.stateSize = options.inputSize * options.outputSize;
-    this.strengths = new Float32Array(this.stateSize);
+    this.strengths = createFloat32Array('inputSize * outputSize', this.stateSize);
   }
 
   /** @inheritdoc */
@@ -102,7 +107,7 @@ export class RescorlaWagnerLearner implements Learner {
   /** @inheritdoc */
   public restore(state: Float32Array): void {
     assertSize('state', state, this.stateSize);
-    assertFiniteBuffer('state', state);
+    assertWithinMagnitude('state', state, this.maxStrength);
     this.strengths.set(state);
   }
 }
