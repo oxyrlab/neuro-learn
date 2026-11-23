@@ -43,4 +43,6 @@ learner.learn(new Float32Array(4), Float32Array.of(1), 0.5); // credit flows to 
 
 ## Gotchas
 
-Call `decay` exactly once per elapsed interval; `observe` does not advance time.
+- Call `decay` exactly once per elapsed interval; `observe` does not advance time.
+- Cue strengths must be **>= 0** in `observe` **and** `learn` (a replacing trace cannot represent negative cues); negative values throw `InvalidParameterError` and leave the state untouched.
+- `restore` rejects a negative trace and strengths beyond `maxStrength`. The trace itself is not bounded by `maxStrength`: it mirrors the cues you pass.
