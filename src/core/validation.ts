@@ -78,3 +78,19 @@ export function assertFiniteInRange(name: string, value: number, min: number, ma
     throw new InvalidParameterError(name, value, `a finite number in [${min}, ${max}]`);
   }
 }
+
+/**
+ * Throws {@link InvalidParameterError} unless every element of `buffer` is finite and >= 0.
+ * Allocation-free.
+ *
+ * @param name - Buffer name used in the error message.
+ * @param buffer - Buffer to check.
+ */
+export function assertNonNegativeBuffer(name: string, buffer: Float32Array): void {
+  for (let index = 0; index < buffer.length; index += 1) {
+    const value = buffer[index] as number;
+    if (!Number.isFinite(value) || value < 0) {
+      throw new InvalidParameterError(`${name}[${index}]`, value, 'a finite number >= 0');
+    }
+  }
+}
