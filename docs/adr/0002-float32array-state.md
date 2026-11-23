@@ -17,4 +17,6 @@ Every component stores its state in `Float32Array`s sized at construction. `pred
 
 ## Consequences
 
+See [ADR 0007](0007-hot-path-numerics-and-failure-handling.md) for the numeric patterns needed to keep V8 from boxing numbers, and `npm run check:allocation` for the enforcement.
+
 Cheap `serialize`/`restore`; contract tests can assert fixed state size and no allocation. Float32 precision is accepted.
