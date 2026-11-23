@@ -80,4 +80,28 @@ describe('RescorlaWagnerLearner', () => {
     expect(() => new RescorlaWagnerLearner(options)).toThrow(InvalidParameterError);
     expect(() => new RescorlaWagnerLearner(options)).toThrow(new RegExp(name));
   });
+
+  it('rejects restoring strengths beyond maxStrength', () => {
+    const learner = new RescorlaWagnerLearner({ inputSize: 1, outputSize: 1, maxStrength: 1 });
+    expect(() => learner.restore(Float32Array.of(100))).toThrow(InvalidParameterError);
+    expect(() => learner.restore(Float32Array.of(100))).toThrow(/state\[0\]/);
+  });
+
+  it('round-trips a state clamped at a bound that is not exactly representable in Float32', () => {
+    const learner = new RescorlaWagnerLearner({ inputSize: 1, outputSize: 1, maxStrength: 0.1 });
+    for (let i = 0; i < 50; i += 1) learner.learn(Float32Array.of(1), Float32Array.of(10), 1);
+    expect(() => learner.restore(learner.serialize())).not.toThrow();
+  });
+
+  it('rejects a bound larger than the Float32 range and impossible sizes', () => {
+    expect(
+      () => new RescorlaWagnerLearner({ inputSize: 1, outputSize: 1, maxStrength: 1e39 }),
+    ).toThrow(/maxStrength/);
+    expect(() => new RescorlaWagnerLearner({ inputSize: 1e10, outputSize: 1 })).toThrow(
+      InvalidParameterError,
+    );
+    expect(() => new RescorlaWagnerLearner({ inputSize: 1e10, outputSize: 1 })).toThrow(
+      /inputSize \* outputSize/,
+    );
+  });
 });
