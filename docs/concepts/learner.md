@@ -27,14 +27,16 @@ tests:
 
 ## Conventions
 
-| Topic       | Rule                                                                                                         |
-| ----------- | ------------------------------------------------------------------------------------------------------------ |
-| Features    | Finite numbers, normalized by the caller (typically [0, 1])                                                  |
-| `rate`      | Effective rate for this call, in [0, 1]; callers scale it by a modulator                                     |
-| `dt`        | Seconds, finite, >= 0                                                                                        |
-| Allocation  | None in `predict`/`learn`/`decay`; `serialize` returns a copy                                                |
-| Errors      | Wrong buffer length → `SizeMismatchError`; non-finite value or out-of-range scalar → `InvalidParameterError` |
-| Inheritance | New instance = empty memory; never copy learned state to offspring                                           |
+| Topic       | Rule                                                                                                                                                                       |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Features    | Finite numbers, normalized by the caller (typically [0, 1]); a learner may add constraints (`eligibility-trace`: >= 0)                                                     |
+| `rate`      | Effective rate for this call, in [0, 1]; callers scale it by a modulator                                                                                                   |
+| `dt`        | Seconds, finite, >= 0                                                                                                                                                      |
+| Allocation  | None in `predict`/`learn`/`decay`; `serialize` returns a copy                                                                                                              |
+| Errors      | Wrong buffer length → `SizeMismatchError`; non-finite value or out-of-range scalar → `InvalidParameterError`; impossible sizes (not allocatable) → `InvalidParameterError` |
+| `restore`   | Rejects any state the learner could not have produced (non-finite, weights beyond their bound)                                                                             |
+| Bounds      | `maxStrength` / `maxWeight` must be > 0 and <= 3.4028234663852886e38 (the Float32 maximum)                                                                                 |
+| Inheritance | New instance = empty memory; never copy learned state to offspring                                                                                                         |
 
 ## Contract suite
 
@@ -42,5 +44,5 @@ tests:
 
 ## Gotchas
 
-- Absence of allocation is checked structurally only; measured benchmarks come in phase 3.
+- Absence of allocation is verified by `npm run check:allocation` (see [performance](../performance.md)), not by the contract suite.
 - Delta-rule stability needs `rate · Σ cue² < 2`; weights are clamped regardless, so state never diverges.
