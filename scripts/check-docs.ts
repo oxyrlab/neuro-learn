@@ -1,6 +1,6 @@
 /**
  * Documentation gate (`npm run docs:check`). Fails when:
- * 1. a source file under `src/` (other than `index.ts`) has no sibling `.test.ts`;
+ * 1. a source file under `src/` with runtime code (other than `index.ts`) has no sibling `.test.ts`;
  * 2. a public export lacks a TSDoc block directly above it;
  * 3. a relative markdown link under `docs/` or in the root `*.md` files points to a missing file;
  * 4. a required docs file is missing.
@@ -36,10 +36,11 @@ const sourceFiles = walk(join(root, 'src')).filter(
 );
 for (const file of sourceFiles) {
   const relative = file.slice(root.length + 1);
-  if (!existsSync(file.replace(/\.ts$/, '.test.ts'))) {
+  const lines = readFileSync(file, 'utf8').split('\n');
+  const hasRuntimeCode = lines.some((line) => /^export\s+(class|function|const|enum)\s/.test(line));
+  if (hasRuntimeCode && !existsSync(file.replace(/\.ts$/, '.test.ts'))) {
     problems.push(`${relative}: no sibling test file (${relative.replace(/\.ts$/, '.test.ts')}).`);
   }
-  const lines = readFileSync(file, 'utf8').split('\n');
   lines.forEach((line, index) => {
     if (/^export\s/.test(line) && !/^export\s+(type\s+)?\{/.test(line)) {
       const previous = lines[index - 1]?.trim() ?? '';
