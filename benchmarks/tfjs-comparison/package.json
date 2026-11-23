@@ -1,0 +1,19 @@
+{
+  "name": "neuro-learn-tfjs-comparison",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Benchmark of @oxyrlab/neuro-learn against TensorFlow.js. Kept separate so the library stays dependency-free.",
+  "type": "module",
+  "scripts": {
+    "bench": "tsx run.ts"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "4.22.0",
+    "@tensorflow/tfjs-backend-wasm": "4.22.0",
+    "@tensorflow/tfjs-node": "4.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "tsx": "4.23.15"
+  }
+}
