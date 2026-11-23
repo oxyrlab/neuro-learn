@@ -28,7 +28,7 @@ All weights of an internal [FeedforwardNetwork](feedforward-network.md).
 ## Behavior
 
 - Initial state: random hidden layers, **zero output layer** → predicts 0 for `linear`/`tanh`/`relu` outputs (0.5 for `sigmoid`). Contract option `initialState: 'zero-prediction'`.
-- `learn`: forward, [backprop](backprop.md), `w ← clamp(w − rate · ∂loss/∂w)`.
+- `learn`: forward, [backprop](backprop.md), `w ← clamp(w − rate · ∂loss/∂w)`. If the forward pass overflowed Float32 (huge inputs with unbounded activations such as `relu`/`linear`), the loss or gradient is non-finite and the update is **skipped** so the weights are never corrupted.
 - `decay(dt)`: `w *= exp(−forgetRatePerSecond · dt)`.
 
 ## Example
@@ -44,4 +44,4 @@ learner.learn(Float32Array.of(1, 0), Float32Array.of(1), 0.1);
 
 ## Gotchas
 
-`restore` overwrites everything, so an instance created with a different seed behaves identically after it.
+`restore` rejects weights beyond `maxWeight`. `restore` overwrites everything, so an instance created with a different seed behaves identically after it.
