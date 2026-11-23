@@ -1,5 +1,6 @@
 import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
+import { InvalidParameterError } from './errors';
 import { createSeededRng } from './rng';
 
 describe('createSeededRng', () => {
@@ -35,5 +36,15 @@ describe('createSeededRng', () => {
     for (let i = 0; i < count; i += 1) sum += rng.next();
     expect(sum / count).toBeGreaterThan(0.48);
     expect(sum / count).toBeLessThan(0.52);
+  });
+
+  it.each([NaN, Infinity, -Infinity, 1.5])('rejects the non-integer seed %s', (bad) => {
+    expect(() => createSeededRng(bad)).toThrow(InvalidParameterError);
+    expect(() => createSeededRng(bad)).toThrow(/seed/);
+  });
+
+  it('accepts negative integers and documents wrap-around at 2^32', () => {
+    expect(createSeededRng(-1).next()).toBe(createSeededRng(2 ** 32 - 1).next());
+    expect(createSeededRng(0).next()).toBe(createSeededRng(2 ** 32).next());
   });
 });
