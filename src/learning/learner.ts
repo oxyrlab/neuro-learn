@@ -3,7 +3,8 @@
  * learn from one example, forget over time, and be snapshotted.
  *
  * Conventions:
- * - Feature values are normalized by the caller, typically to [0, 1].
+ * - Feature values are finite and normalized by the caller, typically to [0, 1]. A learner may add
+ *   constraints (`eligibility-trace` requires features >= 0); see its docs.
  * - `predict`, `learn` and `decay` allocate nothing; `serialize` returns an independent copy.
  * - Buffers with the wrong length throw `SizeMismatchError`; non-finite values or out-of-range
  *   scalars throw `InvalidParameterError`.
@@ -47,7 +48,9 @@ export interface Learner {
   /**
    * Replaces the full state with a copy of `state`.
    *
-   * @param state - Buffer of length `stateSize` containing finite values.
+   * @param state - Buffer of length `stateSize` containing finite values that respect the
+   *   learner's own bounds (e.g. weights within `maxStrength`); anything this learner could not
+   *   have produced is rejected with `InvalidParameterError`.
    */
   restore(state: Float32Array): void;
 }
