@@ -3,7 +3,7 @@
 Small, deterministic, allocation-free learning algorithms and neural networks on `Float32Array`.
 Built as the learning core for [EcoSim](https://github.com/oxyrlab), but usable on its own.
 
-> **Status:** `0.1.0`: all planned components are implemented and tested (see [docs/STATUS.md](docs/STATUS.md)).
+> **Status:** `0.1.0` is an **initial implementation**: all planned components exist and are tested, and will be refined and extended in later work (see [docs/STATUS.md](docs/STATUS.md)).
 
 ## Contents
 
