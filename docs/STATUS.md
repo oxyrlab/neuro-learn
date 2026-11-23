@@ -1,7 +1,8 @@
 # Status
 
 - **Current phase:** 3 — realistic tests, debugging and release preparation (complete, awaiting review and tag approval).
-- **Version:** `0.1.0` prepared; the `v0.1.0` tag is **not** pushed yet (needs approval).
+- **Maturity:** initial implementation (`0.1.0`). Everything planned is implemented and tested; improvements and extensions are expected in later sessions.
+- **Version:** `0.1.0` prepared; tag `v0.1.0` is pushed.
 - **Next task:** integrate into EcoSim (phase 0 of EcoSim): thin `src/brain/learning` layer over this package; amend EcoSim ADR 0008.
 
 ## Done
