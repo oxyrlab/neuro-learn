@@ -1,10 +1,12 @@
 import type { Rng } from '../core/rng';
 import {
+  assertBound,
   assertFiniteBuffer,
   assertFiniteInRange,
   assertNonNegative,
-  assertPositive,
   assertSize,
+  assertWithinMagnitude,
+  isFiniteBuffer,
 } from '../core/validation';
 import { Backpropagator } from '../nn/backprop';
 import type { ActivationId } from '../nn/activations';
@@ -48,8 +50,11 @@ export interface MlpSgdOptions {
  * learner.learn(Float32Array.of(1, 0), Float32Array.of(1), 0.1);
  */
 export class MlpSgdLearner implements Learner {
+  /** Number of network inputs (`layerSizes[0]`). */
   public readonly inputSize: number;
+  /** Number of network outputs (last entry of `layerSizes`). */
   public readonly outputSize: number;
+  /** Length of the serialized state: the number of network weights. */
   public readonly stateSize: number;
   private readonly network: FeedforwardNetwork;
   private readonly backprop: Backpropagator;
@@ -65,7 +70,7 @@ export class MlpSgdLearner implements Learner {
   public constructor(options: MlpSgdOptions) {
     this.maxWeight = options.maxWeight ?? DEFAULT_MAX_WEIGHT;
     this.forgetRatePerSecond = options.forgetRatePerSecond ?? DEFAULT_FORGET_RATE_PER_SECOND;
-    assertPositive('maxWeight', this.maxWeight);
+    assertBound('maxWeight', this.maxWeight);
     assertNonNegative('forgetRatePerSecond', this.forgetRatePerSecond);
     this.network = new FeedforwardNetwork({ ...options, zeroOutputLayer: true });
     clampInPlace(this.network.weights, this.maxWeight);
@@ -88,7 +93,10 @@ export class MlpSgdLearner implements Learner {
     assertFiniteBuffer('target', target);
     assertFiniteInRange('rate', rate, 0, 1);
     this.network.forward(features, this.scratchOutput);
-    this.backprop.computeGradient(target, this.gradient);
+    const loss = this.backprop.computeGradient(target, this.gradient);
+    // A forward pass that overflowed Float32 (huge inputs with unbounded activations) yields a
+    // non-finite loss or gradient; applying it would turn every weight into NaN, so skip the update.
+    if (!Number.isFinite(loss) || !isFiniteBuffer(this.gradient)) return;
     const weights = this.network.weights;
     for (let index = 0; index < weights.length; index += 1) {
       const next = (weights[index] as number) - rate * (this.gradient[index] as number);
@@ -112,6 +120,8 @@ export class MlpSgdLearner implements Learner {
 
   /** @inheritdoc */
   public restore(state: Float32Array): void {
+    assertSize('state', state, this.stateSize);
+    assertWithinMagnitude('state', state, this.maxWeight);
     this.network.restore(state);
   }
 }
