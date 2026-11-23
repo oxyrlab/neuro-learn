@@ -107,4 +107,18 @@ describe('HebbianLearner', () => {
     expect(() => new HebbianLearner(options)).toThrow(InvalidParameterError);
     expect(() => new HebbianLearner(options)).toThrow(new RegExp(name));
   });
+
+  it('rejects restoring weights beyond maxWeight', () => {
+    const learner = new HebbianLearner({ inputSize: 1, outputSize: 1, maxWeight: 1 });
+    expect(() => learner.restore(Float32Array.of(-5))).toThrow(InvalidParameterError);
+  });
+
+  it('rejects a bound larger than the Float32 range and impossible sizes', () => {
+    expect(() => new HebbianLearner({ inputSize: 1, outputSize: 1, maxWeight: 1e39 })).toThrow(
+      /maxWeight/,
+    );
+    expect(() => new HebbianLearner({ inputSize: 1e10, outputSize: 1 })).toThrow(
+      InvalidParameterError,
+    );
+  });
 });
