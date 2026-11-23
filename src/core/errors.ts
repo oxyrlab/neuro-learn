@@ -49,3 +49,25 @@ export class SizeMismatchError extends Error {
     this.expected = expected;
   }
 }
+
+/**
+ * Thrown when a computation would leave a component's internal state or output non-finite
+ * (Infinity or NaN), for example an unbounded activation overflowing over many recurrent steps.
+ * The component is left unchanged so the caller can recover (e.g. `reset()`).
+ *
+ * @example
+ * throw new NumericInstabilityError('RecurrentNetwork.forward', 'hidden state became non-finite');
+ */
+export class NumericInstabilityError extends Error {
+  public readonly component: string;
+
+  /**
+   * @param component - Where it happened, e.g. `"RecurrentNetwork.forward"`.
+   * @param detail - What became non-finite and a hint on how to avoid it.
+   */
+  public constructor(component: string, detail: string) {
+    super(`Numeric instability in ${component}: ${detail}.`);
+    this.name = 'NumericInstabilityError';
+    this.component = component;
+  }
+}
