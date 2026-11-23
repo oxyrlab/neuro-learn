@@ -1,17 +1,20 @@
 # Status
 
-- **Current phase:** 2 — networks and `mlp-sgd` (complete, awaiting review).
-- **Next task:** Phase 3 — realistic scenario tests (conditioning, extinction, generalization, XOR/regression), property tests, allocation benchmark, debugging, release `0.1.0`.
+- **Current phase:** 3 — realistic tests, debugging and release preparation (complete, awaiting review and tag approval).
+- **Version:** `0.1.0` prepared; the `v0.1.0` tag is **not** pushed yet (needs approval).
+- **Next task:** integrate into EcoSim (phase 0 of EcoSim): thin `src/brain/learning` layer over this package; amend EcoSim ADR 0008.
 
 ## Done
 
 - Phase 0: tooling, `src/core` (Rng, errors), docs skeleton, ADRs 0001–0004.
-- Phase 1: `core/validation`, `Learner` interface, `linear-math`, `runLearnerContract` (`/testing` entry), `rescorla-wagner`, `eligibility-trace`, `hebbian`; concept docs; ADR 0005.
-- Phase 2: `nn/activations`, `Network`, `FeedforwardNetwork`, `Backpropagator` (numerical gradient check), `MlpSgdLearner`, `RecurrentNetwork`; contract option `initialState`; ADR 0006.
+- Phase 1: `Learner`, validation, `linear-math`, `runLearnerContract` (`/testing`), `rescorla-wagner`, `eligibility-trace`, `hebbian`.
+- Phase 2: activations, `Network`, `FeedforwardNetwork`, `Backpropagator`, `MlpSgdLearner`, `RecurrentNetwork`.
+- Phase 3: scenario tests (fear conditioning, extinction, generalization, reward/pain, long runs, function fitting, recurrent evolution), model-based fuzzing, allocation check, benchmarks, code-review fixes, ADR 0007.
 
 ## Open issues / debt
 
-- "No allocation after construction" is only checked structurally; a measured benchmark is planned for phase 3.
+- `check:allocation` runs in CI on Node 24 only; thresholds were verified on Node 24 and may need tuning on other versions.
+- Features of `predict` are not range-checked: extreme finite inputs (near 3e38) can produce infinite outputs (state stays safe).
 
 ## Open design questions
 
