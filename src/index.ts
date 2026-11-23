@@ -1,4 +1,4 @@
-export { InvalidParameterError, SizeMismatchError } from './core/errors';
+export { InvalidParameterError, NumericInstabilityError, SizeMismatchError } from './core/errors';
 export type { Rng } from './core/rng';
 export { createSeededRng } from './core/rng';
 export type { Learner } from './learning/learner';
