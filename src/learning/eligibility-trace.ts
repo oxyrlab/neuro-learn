@@ -1,6 +1,7 @@
 import {
   assertFiniteBuffer,
   assertFiniteInRange,
+  assertNonNegativeBuffer,
   assertNonNegative,
   assertPositive,
   assertPositiveInteger,
@@ -80,11 +81,13 @@ export class EligibilityTraceLearner implements Learner {
   /**
    * Records currently visible cues: `trace[i] = max(trace[i], features[i])` (replacing trace).
    *
-   * @param features - Cue strengths of length `inputSize`, finite, normally in [0, 1].
+   * @param features - Cue strengths of length `inputSize`, finite and >= 0 (normally in [0, 1]).
+   *   Negative values are rejected because a replacing trace cannot represent them.
+   * @throws InvalidParameterError if any value is negative or non-finite.
    */
   public observe(features: Float32Array): void {
     assertSize('features', features, this.inputSize);
-    assertFiniteBuffer('features', features);
+    assertNonNegativeBuffer('features', features);
     for (let index = 0; index < this.inputSize; index += 1) {
       const value = features[index] as number;
       if (value > (this.trace[index] as number)) this.trace[index] = value;
