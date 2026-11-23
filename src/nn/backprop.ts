@@ -47,8 +47,9 @@ export class Backpropagator {
       const value = outputValues[index] as number;
       const error = value - (target[index] as number);
       loss += 0.5 * error * error;
-      outputDeltas[index] = error * (outputActivation?.derivativeFromOutput(value) as number);
+      outputDeltas[index] = error;
     }
+    outputActivation?.scaleByDerivative(outputValues, outputDeltas);
 
     for (let layer = layerCount - 1; layer >= 0; layer -= 1) {
       const fanIn = network.layerSizes[layer] as number;
@@ -75,9 +76,9 @@ export class Backpropagator {
               (network.weights[start + row * fanIn + column] as number) *
               (layerDeltas[row] as number);
           }
-          previousDeltas[column] =
-            sum * (previousActivation?.derivativeFromOutput(inputs[column] as number) as number);
+          previousDeltas[column] = sum;
         }
+        previousActivation?.scaleByDerivative(inputs, previousDeltas);
       }
     }
     return loss;
