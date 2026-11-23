@@ -59,6 +59,10 @@ runLearnerContract('my-learner', () => new MyLearner({/* non-zero forgetting */}
 - Every component is unit-tested; coverage thresholds are enforced in CI.
 - Hot paths allocate nothing (`npm run check:allocation`); see [docs/performance.md](docs/performance.md).
 
+## Benchmark against TensorFlow.js
+
+[benchmarks/tfjs-comparison](benchmarks/tfjs-comparison/README.md) compares speed, resource use and accuracy with TensorFlow.js on identical data and weights. Summary and recorded results: [docs/performance.md](docs/performance.md#comparison-with-tensorflowjs).
+
 ## Development
 
 ```bash
