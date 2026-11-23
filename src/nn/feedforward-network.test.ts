@@ -150,4 +150,16 @@ describe('FeedforwardNetwork', () => {
     expect(() => new FeedforwardNetwork({ rng: rng(), ...options })).toThrow(InvalidParameterError);
     expect(() => new FeedforwardNetwork({ rng: rng(), ...options })).toThrow(new RegExp(name));
   });
+
+  it('rejects layer sizes too large to allocate with a descriptive error', () => {
+    expect(() => new FeedforwardNetwork({ layerSizes: [1e10, 1], rng: rng() })).toThrow(
+      InvalidParameterError,
+    );
+    expect(() => new FeedforwardNetwork({ layerSizes: [1e10, 1], rng: rng() })).toThrow(
+      /number of weights/,
+    );
+    expect(() => new FeedforwardNetwork({ layerSizes: [1e9, 1e9, 1], rng: rng() })).toThrow(
+      InvalidParameterError,
+    );
+  });
 });
