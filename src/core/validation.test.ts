@@ -4,6 +4,7 @@ import {
   assertFiniteBuffer,
   assertFiniteInRange,
   assertNonNegative,
+  assertNonNegativeBuffer,
   assertPositive,
   assertPositiveInteger,
   assertSize,
@@ -64,5 +65,17 @@ describe('assertFiniteInRange', () => {
   });
   it.each([-0.01, 1.01, NaN, Infinity])('rejects %s', (bad) => {
     expect(() => assertFiniteInRange('r', bad, 0, 1)).toThrow(/\[0, 1\]/);
+  });
+});
+
+describe('assertNonNegativeBuffer', () => {
+  it('accepts zeros and positives', () => {
+    expect(() => assertNonNegativeBuffer('x', Float32Array.of(0, 1, 2.5))).not.toThrow();
+  });
+  it.each([-0.5, NaN, Infinity])('rejects %s and names the index', (bad) => {
+    expect(() => assertNonNegativeBuffer('x', Float32Array.of(0, bad))).toThrow(/x\[1\]/);
+    expect(() => assertNonNegativeBuffer('x', Float32Array.of(0, bad))).toThrow(
+      InvalidParameterError,
+    );
   });
 });
