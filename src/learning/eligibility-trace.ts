@@ -1,11 +1,14 @@
 import {
+  assertBound,
   assertFiniteBuffer,
   assertFiniteInRange,
-  assertNonNegativeBuffer,
   assertNonNegative,
+  assertNonNegativeBuffer,
   assertPositive,
   assertPositiveInteger,
   assertSize,
+  assertWithinMagnitude,
+  createFloat32Array,
 } from '../core/validation';
 import type { Learner } from './learner';
 import { applyDeltaRule, multiplyMatrixVector, scaleInPlace } from './linear-math';
@@ -46,8 +49,11 @@ export interface EligibilityTraceOptions {
  * learner.learn(new Float32Array(4), Float32Array.of(1), 0.5); // outcome arrives later
  */
 export class EligibilityTraceLearner implements Learner {
+  /** Number of cues (input features). */
   public readonly inputSize: number;
+  /** Number of outcomes (outputs). */
   public readonly outputSize: number;
+  /** Length of the serialized state: strengths plus trace, `inputSize * (outputSize + 1)`. */
   public readonly stateSize: number;
   private readonly state: Float32Array;
   private readonly strengths: Float32Array;
@@ -66,14 +72,14 @@ export class EligibilityTraceLearner implements Learner {
     assertPositive('traceTimeConstantSeconds', options.traceTimeConstantSeconds);
     this.maxStrength = options.maxStrength ?? DEFAULT_MAX_STRENGTH;
     this.forgetRatePerSecond = options.forgetRatePerSecond ?? DEFAULT_FORGET_RATE_PER_SECOND;
-    assertPositive('maxStrength', this.maxStrength);
+    assertBound('maxStrength', this.maxStrength);
     assertNonNegative('forgetRatePerSecond', this.forgetRatePerSecond);
     this.inputSize = options.inputSize;
     this.outputSize = options.outputSize;
     this.traceTimeConstantSeconds = options.traceTimeConstantSeconds;
     const strengthCount = options.inputSize * options.outputSize;
     this.stateSize = strengthCount + options.inputSize;
-    this.state = new Float32Array(this.stateSize);
+    this.state = createFloat32Array('inputSize * (outputSize + 1)', this.stateSize);
     this.strengths = this.state.subarray(0, strengthCount);
     this.trace = this.state.subarray(strengthCount);
   }
@@ -146,7 +152,8 @@ export class EligibilityTraceLearner implements Learner {
   /** @inheritdoc */
   public restore(state: Float32Array): void {
     assertSize('state', state, this.stateSize);
-    assertFiniteBuffer('state', state);
+    assertWithinMagnitude('state', state.subarray(0, this.strengths.length), this.maxStrength);
+    assertNonNegativeBuffer('state.trace', state.subarray(this.strengths.length));
     this.state.set(state);
   }
 }
