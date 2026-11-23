@@ -1,10 +1,12 @@
 import {
+  assertBound,
   assertFiniteBuffer,
   assertFiniteInRange,
   assertNonNegative,
-  assertPositive,
   assertPositiveInteger,
   assertSize,
+  assertWithinMagnitude,
+  createFloat32Array,
 } from '../core/validation';
 import type { Learner } from './learner';
 import { multiplyMatrixVector, scaleInPlace } from './linear-math';
@@ -43,8 +45,11 @@ export interface HebbianOptions {
  * learner.learn(Float32Array.of(1, 0), Float32Array.of(1), 0.2); // inputs and output co-active
  */
 export class HebbianLearner implements Learner {
+  /** Number of pre-synaptic inputs. */
   public readonly inputSize: number;
+  /** Number of post-synaptic outputs. */
   public readonly outputSize: number;
+  /** Length of the serialized state: `outputSize * inputSize`. */
   public readonly stateSize: number;
   private readonly weights: Float32Array;
   private readonly maxWeight: number;
@@ -61,13 +66,13 @@ export class HebbianLearner implements Learner {
     this.maxWeight = options.maxWeight ?? DEFAULT_MAX_WEIGHT;
     this.weightDecay = options.weightDecay ?? DEFAULT_WEIGHT_DECAY;
     this.forgetRatePerSecond = options.forgetRatePerSecond ?? DEFAULT_FORGET_RATE_PER_SECOND;
-    assertPositive('maxWeight', this.maxWeight);
+    assertBound('maxWeight', this.maxWeight);
     assertFiniteInRange('weightDecay', this.weightDecay, 0, 1);
     assertNonNegative('forgetRatePerSecond', this.forgetRatePerSecond);
     this.inputSize = options.inputSize;
     this.outputSize = options.outputSize;
     this.stateSize = options.inputSize * options.outputSize;
-    this.weights = new Float32Array(this.stateSize);
+    this.weights = createFloat32Array('inputSize * outputSize', this.stateSize);
   }
 
   /** @inheritdoc */
@@ -114,7 +119,7 @@ export class HebbianLearner implements Learner {
   /** @inheritdoc */
   public restore(state: Float32Array): void {
     assertSize('state', state, this.stateSize);
-    assertFiniteBuffer('state', state);
+    assertWithinMagnitude('state', state, this.maxWeight);
     this.weights.set(state);
   }
 }
