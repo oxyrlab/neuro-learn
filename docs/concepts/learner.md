@@ -38,7 +38,7 @@ tests:
 
 ## Contract suite
 
-`runLearnerContract(name, factory, options?)` from `@oxyrlab/neuro-learn/testing` (needs `vitest`). The factory must enable a non-zero forgetting rate. Checks: constant state size, empty start, finite and bounded state, determinism, serialize/restore round-trip, independent serialized copy, input immutability, forgetting, validation errors.
+`runLearnerContract(name, factory, options?)` from `@oxyrlab/neuro-learn/testing` (needs `vitest`). The factory must enable a non-zero forgetting rate. Options: `maxAbsState`, `seed`, `steps`, `initialState` (`'all-zero'` default, or `'zero-prediction'` for learners that must start with random hidden weights, see [ADR 0006](../adr/0006-network-conventions.md)). Checks: constant state size, empty start, finite and bounded state, determinism, serialize/restore round-trip, independent serialized copy, input immutability, forgetting, validation errors.
 
 ## Gotchas
 
