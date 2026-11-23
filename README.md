@@ -3,15 +3,15 @@
 Small, deterministic, allocation-free learning algorithms and neural networks on `Float32Array`.
 Built as the learning core for [EcoSim](https://github.com/oxyrlab), but usable on its own.
 
-> **Status:** under development (phase 0 complete: project scaffolding). See [docs/STATUS.md](docs/STATUS.md).
+> **Status:** under development (phases 0–1 complete: scaffolding, core, linear learners). See [docs/STATUS.md](docs/STATUS.md).
 
 ## Planned contents
 
-| Area     | Items                                                        |
-| -------- | ------------------------------------------------------------ |
-| Learners | `rescorla-wagner`, `eligibility-trace`, `hebbian`, `mlp-sgd` |
-| Networks | feedforward and recurrent networks on `Float32Array`         |
-| Core     | `Rng` interface, seeded RNG, descriptive errors              |
+| Area     | Items                                                                         |
+| -------- | ----------------------------------------------------------------------------- |
+| Learners | `rescorla-wagner`, `eligibility-trace`, `hebbian` (done); `mlp-sgd` (planned) |
+| Networks | feedforward and recurrent networks on `Float32Array`                          |
+| Core     | `Rng` interface, seeded RNG, descriptive errors                               |
 
 ## Design rules
 
